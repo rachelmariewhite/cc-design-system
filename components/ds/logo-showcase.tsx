@@ -1,5 +1,26 @@
-import { Logo, LogoPlate } from "@/components/ds/logo"
+import { Logo } from "@/components/ds/logo"
 import { Eyebrow, Panel } from "@/components/ds/primitives"
+
+const variants = [
+  {
+    label: "Full color",
+    note: "Primary lockup. Use on white and light surfaces.",
+    variant: "4c" as const,
+    surface: "border border-border bg-card",
+  },
+  {
+    label: "One color — black",
+    note: "For single-color light backgrounds and print.",
+    variant: "black" as const,
+    surface: "border border-border bg-background",
+  },
+  {
+    label: "One color — white",
+    note: "Reversed mark for dark surfaces and photography.",
+    variant: "white" as const,
+    surface: "bg-foreground",
+  },
+]
 
 const usage = [
   {
@@ -19,13 +40,18 @@ const usage = [
 export function LogoShowcase() {
   return (
     <div className="space-y-4">
-      <div className="grid gap-4 lg:grid-cols-3">
-        <Panel className="flex items-center justify-center p-12 lg:col-span-2">
-          <Logo className="h-auto w-full max-w-md" />
-        </Panel>
-        <div className="flex items-center justify-center rounded-xl border border-border bg-sidebar p-10">
-          <LogoPlate className="px-6 py-5" logoClassName="h-auto w-full max-w-[200px]" />
-        </div>
+      <div className="grid gap-4 sm:grid-cols-3">
+        {variants.map((v) => (
+          <div key={v.label} className="flex flex-col gap-3">
+            <div className={`flex h-44 items-center justify-center rounded-xl p-8 ${v.surface}`}>
+              <Logo variant={v.variant} className="h-auto w-full max-w-[200px]" />
+            </div>
+            <div>
+              <Eyebrow className="mb-1">{v.label}</Eyebrow>
+              <p className="text-sm leading-relaxed text-muted-foreground">{v.note}</p>
+            </div>
+          </div>
+        ))}
       </div>
       <div className="grid gap-4 sm:grid-cols-3">
         {usage.map((u) => (
