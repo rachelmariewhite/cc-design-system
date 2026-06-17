@@ -6,7 +6,7 @@ type LogoVariant = "4c" | "black" | "white"
 const VARIANT_SRC: Record<LogoVariant, string> = {
   "4c": "/images/cerrowire-connect-4c.png",
   black: "/images/cerrowire-connect-black.png",
-  white: "/images/cerrowire-connect-white.png",
+  white: "/images/cerrowire-wordmark-white.png",
 }
 
 interface LogoProps {

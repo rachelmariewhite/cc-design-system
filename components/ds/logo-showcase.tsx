@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Logo } from "@/components/ds/logo"
 import { Eyebrow, Panel } from "@/components/ds/primitives"
 
@@ -60,6 +61,23 @@ export function LogoShowcase() {
             <p className="text-sm leading-relaxed text-muted-foreground">{u.body}</p>
           </Panel>
         ))}
+      </div>
+      <div className="grid gap-4 sm:grid-cols-[auto_1fr] sm:items-center">
+        <div className="flex h-44 items-center justify-center rounded-xl border border-border bg-card p-8">
+          <img
+            src="/images/cerrowire-connect-icon.png"
+            alt="Cerrowire Connect app icon — interlocking chain-link mark"
+            className="h-28 w-28 rounded-[22%]"
+          />
+        </div>
+        <div>
+          <Eyebrow className="mb-1">App icon</Eyebrow>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            The interlocking chain-link &ldquo;Connect&rdquo; mark. Reserved for app icons, favicons, and
+            avatars where the full lockup would not be legible. Keep it on the white rounded tile and
+            never recolor the loops.
+          </p>
+        </div>
       </div>
     </div>
   )
