@@ -27,9 +27,9 @@ const heroFacts = [
 ]
 
 const principles = [
-  { t: "Warm & industrial", d: "A cream canvas and charcoal surfaces keep the focus on product, with orange reserved for action." },
-  { t: "Confident type", d: "Pragmatica sets a clean, engineered tone; Bookmania adds editorial contrast where needed." },
-  { t: "Clarity first", d: "Generous spacing, clear hierarchy, and uppercase labels make dense ordering data scannable." },
+  { t: "Warm & Industrial", d: "A cream canvas and charcoal surfaces keep the focus on product, with orange reserved for action." },
+  { t: "Confident Type", d: "Pragmatica sets a clean, engineered tone; Bookmania adds editorial contrast where needed." },
+  { t: "Clarity First", d: "Generous spacing, clear hierarchy, and uppercase labels make dense ordering data scannable." },
 ]
 
 const sections = [
