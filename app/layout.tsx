@@ -1,13 +1,12 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 
-const inter = Inter({ variable: '--font-inter', subsets: ['latin'] })
-const playfair = Playfair_Display({
-  variable: '--font-playfair',
-  subsets: ['latin'],
-  weight: ['600', '700', '800'],
+const pragmatica = localFont({
+  src: '../public/fonts/Pragmatica.ttf',
+  variable: '--font-pragmatica',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -45,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} bg-background`}>
+    <html lang="en" className={`${pragmatica.variable} bg-background`}>
       <body className="font-sans antialiased">{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body>
     </html>
   )

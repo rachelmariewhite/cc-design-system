@@ -27,17 +27,28 @@ export function ComponentShowcase() {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <Block title="Buttons">
+        <p className="ds-meta mb-3">Main buttons — Pragmatica Book, all caps, rounded-full.</p>
+        <div className="flex flex-wrap items-center gap-3">
+          <Button className="rounded-full px-6 uppercase tracking-wide">Primary Button</Button>
+          <Button
+            variant="outline"
+            className="rounded-full border-2 border-primary px-6 uppercase tracking-wide text-primary hover:bg-primary hover:text-primary-foreground"
+          >
+            Secondary Button
+          </Button>
+        </div>
+        <Separator className="my-4" />
+        <p className="ds-meta mb-3">Variants &amp; sizes.</p>
         <div className="flex flex-wrap items-center gap-3">
           <Button>Start request</Button>
           <Button variant="secondary">View all</Button>
-          <Button variant="outline">Cancel</Button>
           <Button variant="ghost">Skip</Button>
           <Button variant="destructive">Delete</Button>
           <Button variant="link">Learn more</Button>
         </div>
         <Separator className="my-4" />
         <div className="flex flex-wrap items-center gap-3">
-          <Button size="sm">Small</Button>
+          <Button size="sm" className="uppercase">Small</Button>
           <Button>Default</Button>
           <Button size="lg">Large</Button>
           <Button disabled>Disabled</Button>

@@ -11,27 +11,41 @@ interface Swatch {
   border?: boolean
 }
 
-const coreColors: Swatch[] = [
-  { name: "Primary", token: "bg-primary", value: "#e8792b", text: "text-primary-foreground" },
-  { name: "Background", token: "bg-background", value: "#f8f6f3", text: "text-foreground", border: true },
-  { name: "Foreground", token: "bg-foreground", value: "#1a1a1a", text: "text-background" },
-  { name: "Card", token: "bg-card", value: "#ffffff", text: "text-card-foreground", border: true },
-  { name: "Secondary", token: "bg-secondary", value: "#f0ede8", text: "text-secondary-foreground", border: true },
-  { name: "Muted", token: "bg-muted", value: "#f0ede8", text: "text-muted-foreground", border: true },
-  { name: "Accent", token: "bg-accent", value: "#f5f3f0", text: "text-accent-foreground", border: true },
-  { name: "Border", token: "bg-border", value: "#e8e4df", text: "text-foreground" },
+const brandColors: Swatch[] = [
+  { name: "PMS 151 Orange", token: "bg-primary", value: "#F0721F", text: "text-primary-foreground" },
+  { name: "Black", token: "bg-foreground", value: "#000000", text: "text-background" },
+  { name: "White", token: "bg-card", value: "#FFFFFF", text: "text-card-foreground", border: true },
+]
+
+const digitalPalette: Swatch[] = [
+  { name: "Cream", token: "bg-brand-cream", value: "#F7F4F1", text: "text-foreground", border: true },
+  { name: "Sand", token: "bg-brand-sand", value: "#F2EDE9", text: "text-foreground", border: true },
+  { name: "Stone", token: "bg-brand-stone", value: "#D9D2CD", text: "text-foreground" },
+  { name: "Taupe", token: "bg-brand-taupe", value: "#A19893", text: "text-background" },
+  { name: "Charcoal", token: "bg-brand-charcoal", value: "#373331", text: "text-background" },
+]
+
+const semanticColors: Swatch[] = [
+  { name: "Primary", token: "bg-primary", value: "#F0721F", text: "text-primary-foreground" },
+  { name: "Background", token: "bg-background", value: "#F7F4F1", text: "text-foreground", border: true },
+  { name: "Foreground", token: "bg-foreground", value: "#373331", text: "text-background" },
+  { name: "Card", token: "bg-card", value: "#FFFFFF", text: "text-card-foreground", border: true },
+  { name: "Secondary", token: "bg-secondary", value: "#F2EDE9", text: "text-secondary-foreground", border: true },
+  { name: "Muted", token: "bg-muted", value: "#F2EDE9", text: "text-muted-foreground", border: true },
+  { name: "Muted Fg", token: "bg-brand-taupe", value: "#A19893", text: "text-background" },
+  { name: "Border", token: "bg-border", value: "#D9D2CD", text: "text-foreground" },
 ]
 
 const statusColors: Swatch[] = [
-  { name: "Success", token: "bg-success", value: "#22c55e", text: "text-success-foreground" },
-  { name: "Warning", token: "bg-warning", value: "#f59e0b", text: "text-warning-foreground" },
-  { name: "Destructive", token: "bg-destructive", value: "#dc2626", text: "text-destructive-foreground" },
+  { name: "Success", token: "bg-success", value: "#2D8C5A", text: "text-success-foreground" },
+  { name: "Warning", token: "bg-warning", value: "#F0721F", text: "text-warning-foreground" },
+  { name: "Destructive", token: "bg-destructive", value: "#DC2626", text: "text-destructive-foreground" },
 ]
 
 const sidebarColors: Swatch[] = [
-  { name: "Sidebar", token: "bg-sidebar", value: "#2d2d2d", text: "text-sidebar-foreground" },
-  { name: "Sidebar Accent", token: "bg-sidebar-accent", value: "#3d3d3d", text: "text-sidebar-accent-foreground" },
-  { name: "Sidebar Primary", token: "bg-sidebar-primary", value: "#e8792b", text: "text-sidebar-primary-foreground" },
+  { name: "Sidebar", token: "bg-sidebar", value: "#373331", text: "text-sidebar-foreground" },
+  { name: "Sidebar Accent", token: "bg-sidebar-accent", value: "#4A4543", text: "text-sidebar-accent-foreground" },
+  { name: "Sidebar Primary", token: "bg-sidebar-primary", value: "#F0721F", text: "text-sidebar-primary-foreground" },
 ]
 
 function SwatchCard({ swatch }: { swatch: Swatch }) {
@@ -44,7 +58,7 @@ function SwatchCard({ swatch }: { swatch: Swatch }) {
         setCopied(true)
         setTimeout(() => setCopied(false), 1200)
       }}
-      className="group overflow-hidden rounded-lg border border-border bg-card text-left transition-shadow hover:shadow-md"
+      className="group overflow-hidden rounded-xl border border-border bg-card text-left transition-shadow hover:shadow-md"
     >
       <div
         className={cn(
@@ -54,7 +68,9 @@ function SwatchCard({ swatch }: { swatch: Swatch }) {
           swatch.border && "border-b border-border",
         )}
       >
-        <span className="text-xs font-medium opacity-80 group-hover:opacity-100">{copied ? "Copied!" : "Click to copy"}</span>
+        <span className="text-xs font-medium opacity-80 group-hover:opacity-100">
+          {copied ? "Copied!" : "Click to copy"}
+        </span>
       </div>
       <div className="p-3">
         <p className="text-sm font-semibold text-foreground">{swatch.name}</p>
@@ -64,33 +80,27 @@ function SwatchCard({ swatch }: { swatch: Swatch }) {
   )
 }
 
+function Group({ label, swatches }: { label: string; swatches: Swatch[] }) {
+  return (
+    <div>
+      <p className="eyebrow mb-3">{label}</p>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        {swatches.map((s) => (
+          <SwatchCard key={s.name} swatch={s} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function ColorPalette() {
   return (
     <div className="space-y-8">
-      <div>
-        <p className="eyebrow mb-3">Core</p>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {coreColors.map((s) => (
-            <SwatchCard key={s.name} swatch={s} />
-          ))}
-        </div>
-      </div>
-      <div>
-        <p className="eyebrow mb-3">Status</p>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {statusColors.map((s) => (
-            <SwatchCard key={s.name} swatch={s} />
-          ))}
-        </div>
-      </div>
-      <div>
-        <p className="eyebrow mb-3">Sidebar (dark surface)</p>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {sidebarColors.map((s) => (
-            <SwatchCard key={s.name} swatch={s} />
-          ))}
-        </div>
-      </div>
+      <Group label="Cerrowire Brand Colors" swatches={brandColors} />
+      <Group label="Expanded Digital Palette" swatches={digitalPalette} />
+      <Group label="Semantic Tokens" swatches={semanticColors} />
+      <Group label="Status" swatches={statusColors} />
+      <Group label="Sidebar (dark surface)" swatches={sidebarColors} />
     </div>
   )
 }
