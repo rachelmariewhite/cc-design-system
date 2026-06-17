@@ -1,3 +1,5 @@
+import { Eyebrow, Panel, Spec } from "@/components/ds/primitives"
+
 interface TypeRow {
   label: string
   cls: string
@@ -18,18 +20,18 @@ export function Typography() {
   return (
     <div className="space-y-8">
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border border-border bg-card p-6">
-          <p className="eyebrow mb-2">Primary Typeface</p>
+        <Panel className="p-6">
+          <Eyebrow className="mb-2">Primary Typeface</Eyebrow>
           <p className="font-heading text-4xl font-bold text-foreground">Pragmatica</p>
           <p className="ds-meta">Book · Condensed Book · Bold. Fallback: Helvetica Neue.</p>
           <p className="mt-3 font-sans text-2xl text-foreground">AaBbCcDd 1234567890</p>
-        </div>
-        <div className="rounded-xl border border-border bg-card p-6">
-          <p className="eyebrow mb-2">Secondary Typeface</p>
+        </Panel>
+        <Panel className="p-6">
+          <Eyebrow className="mb-2">Secondary Typeface</Eyebrow>
           <p className="font-serif text-4xl font-bold text-foreground">Bookmania</p>
           <p className="ds-meta">Black. Fallback: Bookman.</p>
           <p className="mt-3 font-serif text-2xl text-foreground">AaBbCcDd 1234567890</p>
-        </div>
+        </Panel>
       </div>
 
       <div className="divide-y divide-border rounded-xl border border-border bg-card">
@@ -40,7 +42,7 @@ export function Typography() {
           >
             <div className="md:w-64 md:shrink-0">
               <p className="text-sm font-semibold text-foreground">{row.label}</p>
-              <p className="font-mono text-xs text-muted-foreground">{row.spec}</p>
+              <Spec>{row.spec}</Spec>
             </div>
             <p className={`${row.cls} min-w-0 flex-1 text-foreground`}>{row.sample}</p>
           </div>
@@ -48,7 +50,7 @@ export function Typography() {
         <div className="flex flex-col gap-2 p-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
           <div className="md:w-64 md:shrink-0">
             <p className="text-sm font-semibold text-foreground">Body</p>
-            <p className="font-mono text-xs text-muted-foreground">Pragmatica Book · 18 / 36</p>
+            <Spec>Pragmatica Book · 18 / 36</Spec>
           </div>
           <p className="ds-body min-w-0 flex-1 text-foreground">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur orci suscipit,
@@ -58,7 +60,7 @@ export function Typography() {
         <div className="flex flex-col gap-2 p-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
           <div className="md:w-64 md:shrink-0">
             <p className="text-sm font-semibold text-foreground">Meta</p>
-            <p className="font-mono text-xs text-muted-foreground">Pragmatica Book · 13 / 27</p>
+            <Spec>Pragmatica Book · 13 / 27</Spec>
           </div>
           <p className="ds-meta min-w-0 flex-1">Small text for notes, meta, etc.</p>
         </div>

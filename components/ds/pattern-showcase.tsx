@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card"
 import { FileText, ShoppingCart, Bell, Truck, Upload, Grid3x3, Layers, RotateCcw } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Eyebrow, LabeledBlock } from "@/components/ds/primitives"
 
 const stats = [
   { icon: FileText, count: "4", unit: "requested", title: "Quotes", desc: "View all requested quotes", tint: "bg-primary/10 text-primary" },
@@ -19,8 +20,7 @@ const actions = [
 export function PatternShowcase() {
   return (
     <div className="space-y-8">
-      <div>
-        <p className="eyebrow mb-3">Overview stat card</p>
+      <LabeledBlock label="Overview stat card">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
             <Card key={s.title} className="p-5">
@@ -36,10 +36,9 @@ export function PatternShowcase() {
             </Card>
           ))}
         </div>
-      </div>
+      </LabeledBlock>
 
-      <div>
-        <p className="eyebrow mb-3">Quick action card</p>
+      <LabeledBlock label="Quick action card">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {actions.map((a) => (
             <Card
@@ -52,14 +51,14 @@ export function PatternShowcase() {
               <div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-muted text-foreground">
                 <a.icon className="size-5" />
               </div>
-              {a.featured ? <span className="eyebrow text-primary">New</span> : null}
+              {a.featured ? <Eyebrow className="text-primary">New</Eyebrow> : null}
               <p className="mt-1 font-semibold text-foreground">{a.title}</p>
               <p className="mt-1 text-sm text-muted-foreground">{a.desc}</p>
               <p className="mt-4 text-sm font-medium text-primary">{a.cta} &rarr;</p>
             </Card>
           ))}
         </div>
-      </div>
+      </LabeledBlock>
     </div>
   )
 }

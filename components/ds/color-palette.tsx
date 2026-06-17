@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { Eyebrow } from "@/components/ds/primitives"
 
 interface Swatch {
   name: string
@@ -83,7 +84,7 @@ function SwatchCard({ swatch }: { swatch: Swatch }) {
 function Group({ label, swatches }: { label: string; swatches: Swatch[] }) {
   return (
     <div>
-      <p className="eyebrow mb-3">{label}</p>
+      <Eyebrow className="mb-3">{label}</Eyebrow>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {swatches.map((s) => (
           <SwatchCard key={s.name} swatch={s} />

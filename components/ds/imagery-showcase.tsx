@@ -1,20 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
+import { Panel } from "@/components/ds/primitives"
+
+function Caption({ title, note }: { title: string; note: string }) {
+  return (
+    <figcaption className="border-t border-border p-4">
+      <p className="text-sm font-semibold text-foreground">{title}</p>
+      <p className="ds-meta">{note}</p>
+    </figcaption>
+  )
+}
 
 export function ImageryShowcase() {
   return (
     <div className="grid gap-4 lg:grid-cols-3">
-      <figure className="lg:col-span-2 overflow-hidden rounded-xl border border-border bg-card">
+      <Panel as="figure" className="overflow-hidden lg:col-span-2">
         <img
           src="/images/ref-desktop-dashboard.png"
           alt="Cerrowire Connect desktop dashboard showing the home overview, quick actions, and product categories"
           className="h-auto w-full"
         />
-        <figcaption className="border-t border-border p-4">
-          <p className="text-sm font-semibold text-foreground">Desktop — Dashboard</p>
-          <p className="ds-meta">Sidebar nav, overview stat cards, quick actions, category grid.</p>
-        </figcaption>
-      </figure>
-      <figure className="overflow-hidden rounded-xl border border-border bg-card">
+        <Caption title="Desktop — Dashboard" note="Sidebar nav, overview stat cards, quick actions, category grid." />
+      </Panel>
+      <Panel as="figure" className="overflow-hidden">
         <div className="flex items-center justify-center bg-secondary p-6">
           <img
             src="/images/ref-mobile-home.png"
@@ -22,11 +29,8 @@ export function ImageryShowcase() {
             className="h-auto w-full max-w-[220px] rounded-2xl border border-border shadow-md"
           />
         </div>
-        <figcaption className="border-t border-border p-4">
-          <p className="text-sm font-semibold text-foreground">Mobile — Welcome</p>
-          <p className="ds-meta">Centered logo, pill login button, support footer.</p>
-        </figcaption>
-      </figure>
+        <Caption title="Mobile — Welcome" note="Centered logo, pill login button, support footer." />
+      </Panel>
     </div>
   )
 }

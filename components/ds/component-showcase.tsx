@@ -13,11 +13,33 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
+import { Eyebrow } from "@/components/ds/primitives"
+import { cn } from "@/lib/utils"
+import type { ReactNode } from "react"
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+/** Reusable primary CTA — Pragmatica, all caps, fully rounded. */
+export function PrimaryButton({ className, ...props }: React.ComponentProps<typeof Button>) {
+  return <Button className={cn("rounded-full px-6 uppercase tracking-wide", className)} {...props} />
+}
+
+/** Reusable secondary CTA — outlined orange pill that fills on hover. */
+export function SecondaryButton({ className, ...props }: React.ComponentProps<typeof Button>) {
+  return (
+    <Button
+      variant="outline"
+      className={cn(
+        "rounded-full border-2 border-primary px-6 uppercase tracking-wide text-primary hover:bg-primary hover:text-primary-foreground",
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
     <Card className="p-6">
-      <p className="eyebrow mb-4">{title}</p>
+      <Eyebrow className="mb-4">{title}</Eyebrow>
       {children}
     </Card>
   )
@@ -27,15 +49,10 @@ export function ComponentShowcase() {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       <Block title="Buttons">
-        <p className="ds-meta mb-3">Main buttons — Pragmatica Book, all caps, rounded-full.</p>
+        <p className="ds-meta mb-3">Main buttons — Pragmatica, all caps, rounded-full.</p>
         <div className="flex flex-wrap items-center gap-3">
-          <Button className="rounded-full px-6 uppercase tracking-wide">Primary Button</Button>
-          <Button
-            variant="outline"
-            className="rounded-full border-2 border-primary px-6 uppercase tracking-wide text-primary hover:bg-primary hover:text-primary-foreground"
-          >
-            Secondary Button
-          </Button>
+          <PrimaryButton>Primary Button</PrimaryButton>
+          <SecondaryButton>Secondary Button</SecondaryButton>
         </div>
         <Separator className="my-4" />
         <p className="ds-meta mb-3">Variants &amp; sizes.</p>
