@@ -34,7 +34,7 @@ const principles = [
 
 const sections = [
   { id: "foundations", eyebrow: "Foundations", title: "Principles", description: "Cerrowire Connect pairs a trustworthy, industrial identity with a friendly, approachable interface — built for distributors who need to move fast.", node: <PrinciplesGrid /> },
-  { id: "logo", eyebrow: "Foundations", title: "Logo", description: "The Cerrowire Connect lockup combines the cerrowire wordmark, the CONNECT chain-link mark, and the Service Made Simple tagline.", node: <LogoShowcase /> },
+  { id: "logo", eyebrow: "Foundations", title: "Logo", description: "The Cerrowire Connect lockup combines the Cerrowire wordmark, the Connect chain-link mark, and the Service Made Simple tagline.", node: <LogoShowcase /> },
   { id: "colors", eyebrow: "Foundations", title: "Color", description: "Black, White, and PMS 151 Orange (#F0721F) form the core brand. An expanded digital palette adds warm neutrals for on-screen range. Click any swatch to copy its value.", node: <ColorPalette /> },
   { id: "typography", eyebrow: "Foundations", title: "Typography", description: "Pragmatica is primary (Helvetica Neue fallback); Bookmania is secondary (Bookman fallback). The scale follows the Cerrowire digital style guide.", node: <Typography /> },
   { id: "radius", eyebrow: "Foundations", title: "Shape & Elevation", description: "Soft rounded corners echo the wire-inspired logo. Cards use rounded-xl; pills and primary buttons use fully rounded ends.", node: <RadiusShowcase /> },

@@ -30,7 +30,7 @@ const usage = [
   },
   {
     title: "Clear space",
-    body: "Keep clear space around the lockup equal to the height of the \u201Cc\u201D in cerrowire. Never crowd it with other elements.",
+    body: "Keep clear space around the lockup equal to the height of the \u201CC\u201D in Cerrowire. Never crowd it with other elements.",
   },
   {
     title: "Misuse",
