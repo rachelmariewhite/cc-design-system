@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { Check, Copy } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Eyebrow } from "@/components/ds/primitives"
 
@@ -59,23 +60,23 @@ function SwatchCard({ swatch }: { swatch: Swatch }) {
         setCopied(true)
         setTimeout(() => setCopied(false), 1200)
       }}
-      className="group overflow-hidden rounded-xl border border-border bg-card text-left transition-shadow hover:shadow-md"
+      className="group overflow-hidden rounded-xl border border-border bg-card text-left transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
     >
       <div
         className={cn(
-          "flex h-24 items-end p-3",
+          "flex h-24 items-start justify-end p-3",
           swatch.token,
           swatch.text,
           swatch.border && "border-b border-border",
         )}
       >
-        <span className="text-xs font-medium opacity-80 group-hover:opacity-100">
-          {copied ? "Copied!" : "Click to copy"}
+        <span className="rounded-full bg-black/10 p-1.5 opacity-0 transition-opacity group-hover:opacity-100">
+          {copied ? <Check className="size-3.5" aria-hidden="true" /> : <Copy className="size-3.5" aria-hidden="true" />}
         </span>
       </div>
-      <div className="p-3">
+      <div className="flex items-center justify-between gap-2 p-3">
         <p className="text-sm font-semibold text-foreground">{swatch.name}</p>
-        <p className="font-mono text-xs text-muted-foreground">{swatch.value}</p>
+        <p className="font-mono text-xs text-muted-foreground">{copied ? "Copied" : swatch.value}</p>
       </div>
     </button>
   )

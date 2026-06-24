@@ -1,4 +1,4 @@
-import { Eyebrow, Panel, Spec } from "@/components/ds/primitives"
+import { DownloadButton, Eyebrow, Panel, Spec } from "@/components/ds/primitives"
 
 interface TypeRow {
   label: string
@@ -21,7 +21,12 @@ export function Typography() {
     <div className="space-y-8">
       <div className="grid gap-4 sm:grid-cols-2">
         <Panel className="p-6">
-          <Eyebrow className="mb-2">Primary Typeface</Eyebrow>
+          <div className="mb-2 flex items-center justify-between gap-2">
+            <Eyebrow>Primary Typeface</Eyebrow>
+            <DownloadButton href="/fonts/Pragmatica.ttf" download="Pragmatica.ttf">
+              TTF
+            </DownloadButton>
+          </div>
           <p className="font-heading text-4xl font-bold text-foreground">Pragmatica</p>
           <p className="ds-meta">Book · Condensed Book · Bold. Fallback: Helvetica Neue.</p>
           <p className="mt-3 font-sans text-2xl text-foreground">AaBbCcDd 1234567890</p>

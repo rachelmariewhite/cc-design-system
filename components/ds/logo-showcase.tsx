@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Logo } from "@/components/ds/logo"
-import { Eyebrow, Panel } from "@/components/ds/primitives"
+import { DownloadButton, Eyebrow, Panel } from "@/components/ds/primitives"
 
 const variants = [
   {
@@ -8,18 +8,24 @@ const variants = [
     note: "Primary lockup. Use on white and light surfaces.",
     variant: "4c" as const,
     surface: "border border-border bg-card",
+    file: "/images/cerrowire-connect-4c.png",
+    download: "cerrowire-connect-4c.png",
   },
   {
     label: "One color — black",
     note: "For single-color light backgrounds and print.",
     variant: "black" as const,
     surface: "border border-border bg-background",
+    file: "/images/cerrowire-connect-black.png",
+    download: "cerrowire-connect-black.png",
   },
   {
     label: "One color — white",
     note: "Reversed mark for dark surfaces and photography.",
     variant: "white" as const,
     surface: "bg-foreground",
+    file: "/images/cerrowire-wordmark-white.png",
+    download: "cerrowire-wordmark-white.png",
   },
 ]
 
@@ -48,8 +54,13 @@ export function LogoShowcase() {
               <Logo variant={v.variant} className="h-auto w-full max-w-[200px]" />
             </div>
             <div>
-              <Eyebrow className="mb-1">{v.label}</Eyebrow>
-              <p className="text-sm leading-relaxed text-muted-foreground">{v.note}</p>
+              <div className="flex items-center justify-between gap-2">
+                <Eyebrow>{v.label}</Eyebrow>
+                <DownloadButton href={v.file} download={v.download}>
+                  PNG
+                </DownloadButton>
+              </div>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{v.note}</p>
             </div>
           </div>
         ))}
@@ -71,8 +82,13 @@ export function LogoShowcase() {
           />
         </div>
         <div>
-          <Eyebrow className="mb-1">App icon</Eyebrow>
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <div className="flex items-center justify-between gap-2">
+            <Eyebrow>App icon</Eyebrow>
+            <DownloadButton href="/images/cerrowire-connect-icon.png" download="cerrowire-connect-icon.png">
+              PNG
+            </DownloadButton>
+          </div>
+          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
             The interlocking chain-link &ldquo;Connect&rdquo; mark. Reserved for app icons, favicons, and
             avatars where the full lockup would not be legible. Keep it on the white rounded tile and
             never recolor the loops.

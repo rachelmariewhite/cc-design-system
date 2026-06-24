@@ -1,11 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
-import { Panel } from "@/components/ds/primitives"
+import { DownloadButton, Panel } from "@/components/ds/primitives"
 
-function Caption({ title, note }: { title: string; note: string }) {
+function Caption({ title, note, file, download }: { title: string; note: string; file?: string; download?: string }) {
   return (
-    <figcaption className="border-t border-border p-4">
-      <p className="text-sm font-semibold text-foreground">{title}</p>
-      <p className="ds-meta">{note}</p>
+    <figcaption className="flex items-start justify-between gap-3 border-t border-border p-4">
+      <div>
+        <p className="text-sm font-semibold text-foreground">{title}</p>
+        <p className="ds-meta">{note}</p>
+      </div>
+      {file ? (
+        <DownloadButton href={file} download={download} className="mt-0.5 shrink-0">
+          PNG
+        </DownloadButton>
+      ) : null}
     </figcaption>
   )
 }
@@ -22,6 +29,8 @@ export function ImageryShowcase() {
         <Caption
           title="Brand key art — Service Made Simple"
           note="Logo reversed over a dark, dramatically lit copper-wire photograph. Use for hero banners and campaign headers."
+          file="/images/cerrowire-connect-hero.png"
+          download="cerrowire-connect-hero.png"
         />
       </Panel>
       <div className="grid gap-4 lg:grid-cols-3">

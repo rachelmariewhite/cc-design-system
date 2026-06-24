@@ -7,7 +7,7 @@ import { LogoShowcase } from "@/components/ds/logo-showcase"
 import { RadiusShowcase } from "@/components/ds/radius-showcase"
 import { ImageryShowcase } from "@/components/ds/imagery-showcase"
 import { Logo, LogoPlate } from "@/components/ds/logo"
-import { Eyebrow, Panel } from "@/components/ds/primitives"
+import { DownloadButton, Eyebrow, Panel } from "@/components/ds/primitives"
 
 const nav = [
   { id: "foundations", label: "Foundations" },
@@ -103,6 +103,18 @@ export default function Page() {
                       <p className="text-xs text-muted-foreground">{f.label}</p>
                     </Panel>
                   ))}
+                </div>
+                <div className="mt-6 flex flex-wrap items-center gap-2">
+                  <Eyebrow className="mr-1">Brand Assets</Eyebrow>
+                  <DownloadButton href="/images/cerrowire-connect-4c.png" download="cerrowire-connect-4c.png">
+                    Logo
+                  </DownloadButton>
+                  <DownloadButton href="/images/cerrowire-connect-icon.png" download="cerrowire-connect-icon.png">
+                    App Icon
+                  </DownloadButton>
+                  <DownloadButton href="/fonts/Pragmatica.ttf" download="Pragmatica.ttf">
+                    Font
+                  </DownloadButton>
                 </div>
               </div>
               <div className="flex items-center justify-center rounded-2xl bg-sidebar p-8 md:col-span-2">
