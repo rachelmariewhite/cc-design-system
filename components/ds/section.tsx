@@ -15,7 +15,7 @@ export function Section({ id, eyebrow, title, description, children }: SectionPr
       <div className="mb-8 max-w-2xl">
         <Eyebrow className="mb-2">{eyebrow}</Eyebrow>
         <h2 className="font-heading text-2xl font-bold text-foreground text-balance md:text-3xl">{title}</h2>
-        {description ? <p className="mt-3 leading-relaxed text-muted-foreground text-pretty">{description}</p> : null}
+        {description ? <p className="ds-body mt-3 text-muted-foreground text-pretty">{description}</p> : null}
       </div>
       {children}
     </section>

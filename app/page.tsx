@@ -78,7 +78,7 @@ export default function Page() {
               <a
                 key={n.id}
                 href={`#${n.id}`}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                className="ds-h6 rounded-lg px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               >
                 {n.label}
               </a>
@@ -92,7 +92,7 @@ export default function Page() {
               <div className="md:col-span-3">
                 <Eyebrow className="mb-3">Cerrowire Connect</Eyebrow>
                 <h1 className="ds-h1 text-balance text-foreground">The Cerrowire Connect Design System</h1>
-                <p className="mt-4 max-w-2xl leading-relaxed text-pretty text-muted-foreground">
+                <p className="ds-body mt-4 max-w-2xl text-pretty text-muted-foreground">
                   The visual language behind the Cerrowire Connect ordering platform — a warm, industrial palette
                   anchored by PMS 151 orange, Pragmatica type, and clean rounded surfaces.
                 </p>
