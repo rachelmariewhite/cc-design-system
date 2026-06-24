@@ -10,10 +10,9 @@ interface TypeRow {
 const scale: TypeRow[] = [
   { label: "H1 — Page Titles", cls: "ds-h1", spec: "Pragmatica Bold · 60 / 60", sample: "Service Made Simple" },
   { label: "H2 — Main Headings", cls: "ds-h2", spec: "Pragmatica Bold · 40 / 50", sample: "Welcome back, Mike Smith" },
-  { label: "H3 — Primary Subheadings", cls: "ds-h3", spec: "Pragmatica Bold · 25 / 38", sample: "Quotes & Orders Overview" },
-  { label: "H4 — Secondary Subheadings", cls: "ds-h4", spec: "Pragmatica Bold · 23 / 35", sample: "Order tracking made easy" },
-  { label: "H5 — Lead-Ins", cls: "ds-h5", spec: "Pragmatica Book · 20 / 26", sample: "Request a standard price matrix quote" },
-  { label: "H6 — Section Labels", cls: "ds-h6", spec: "Pragmatica Bold caps · 15 / 19", sample: "Quick Actions" },
+  { label: "H3 — Primary Subheadings & Lead-Ins", cls: "ds-h3", spec: "Pragmatica Bold · 25 / 38", sample: "Quotes & Orders Overview" },
+  { label: "H4 — Secondary Subheadings", cls: "ds-h4", spec: "Pragmatica Bold · 23 / 35", sample: "Order Tracking Made Easy" },
+  { label: "H6 — Sub Title / Section Labels", cls: "ds-h6", spec: "Pragmatica Bold · 15 / 19", sample: "Quick Actions" },
 ]
 
 export function Typography() {
@@ -68,6 +67,33 @@ export function Typography() {
             <Spec>Pragmatica Book · 13 / 27</Spec>
           </div>
           <p className="ds-meta min-w-0 flex-1">Small text for notes, meta, etc.</p>
+        </div>
+        <div className="flex flex-col gap-2 p-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
+          <div className="md:w-64 md:shrink-0">
+            <p className="text-sm font-semibold text-foreground">Main Button</p>
+            <Spec>Pragmatica Book caps · 20 / 26</Spec>
+          </div>
+          <p className="min-w-0 flex-1 text-[20px] font-normal uppercase leading-[26px] tracking-wide text-primary">
+            Primary Button
+          </p>
+        </div>
+        <div className="flex flex-col gap-2 p-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
+          <div className="md:w-64 md:shrink-0">
+            <p className="text-sm font-semibold text-foreground">Small Button</p>
+            <Spec>Pragmatica Condensed Book caps · 15 / 30</Spec>
+          </div>
+          <p className="min-w-0 flex-1 text-[15px] font-normal uppercase leading-[30px] tracking-wide text-primary">
+            Secondary Button
+          </p>
+        </div>
+        <div className="flex flex-col gap-2 p-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
+          <div className="md:w-64 md:shrink-0">
+            <p className="text-sm font-semibold text-foreground">Divider</p>
+            <Spec>2px rule · border</Spec>
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="h-0.5 w-full rounded-full bg-border" />
+          </div>
         </div>
       </div>
     </div>
