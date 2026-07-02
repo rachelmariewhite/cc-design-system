@@ -43,6 +43,7 @@
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+  --color-link: var(--link);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -68,6 +69,8 @@
   --popover-foreground: #373331;
   --primary: #f0721f;
   --primary-foreground: #ffffff;
+  /* Accessible deep-orange for inline text/links on light surfaces (WCAG AA: 5.7:1 on cream). */
+  --link: #9a4a12;
   --secondary: #f2ede9;
   --secondary-foreground: #373331;
   --muted: #f2ede9;
@@ -114,6 +117,8 @@
   --popover-foreground: #f7f4f1;
   --primary: #f0721f;
   --primary-foreground: #ffffff;
+  /* On dark surfaces the brand orange already exceeds AA, and a touch brighter aids legibility. */
+  --link: #ff8a3d;
   --secondary: #4a4543;
   --secondary-foreground: #f7f4f1;
   --muted: #4a4543;

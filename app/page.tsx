@@ -21,7 +21,7 @@ const nav = [
 ]
 
 const heroFacts = [
-  { value: "#F0721F", label: "PMS 151 Orange", className: "font-mono text-primary" },
+  { value: "#F0721F", label: "PMS 151 Orange", className: "font-mono text-link" },
   { value: "Pragmatica", label: "Primary type", className: "font-heading text-foreground" },
   { value: "Bookmania", label: "Secondary type", className: "font-serif text-foreground" },
 ]
@@ -131,7 +131,7 @@ export default function Page() {
 
           <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-8 text-sm text-muted-foreground">
             <Logo className="h-7" />
-            <a href="mailto:support@cerrowire.com" className="font-medium text-primary hover:underline">
+            <a href="mailto:support@cerrowire.com" className="font-medium text-link hover:underline">
               support@cerrowire.com
             </a>
           </footer>

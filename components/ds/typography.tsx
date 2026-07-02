@@ -58,7 +58,7 @@ export function Typography() {
           </div>
           <p className="ds-body min-w-0 flex-1 text-foreground">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur orci suscipit,
-            consequat arcu a, tempor tellus. <span className="text-primary underline">Text link.</span>
+            consequat arcu a, tempor tellus. <span className="text-link font-medium underline">Text link.</span>
           </p>
         </div>
         <div className="flex flex-col gap-2 p-5 md:flex-row md:items-baseline md:justify-between md:gap-8">

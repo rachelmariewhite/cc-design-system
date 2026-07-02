@@ -51,10 +51,10 @@ export function PatternShowcase() {
               <div className="mb-4 flex size-10 items-center justify-center rounded-lg bg-muted text-foreground">
                 <a.icon className="size-5" />
               </div>
-              {a.featured ? <Eyebrow className="text-primary">New</Eyebrow> : null}
+              {a.featured ? <Eyebrow className="text-link">New</Eyebrow> : null}
               <p className="mt-1 font-semibold text-foreground">{a.title}</p>
               <p className="mt-1 text-sm text-muted-foreground">{a.desc}</p>
-              <p className="mt-4 text-sm font-medium text-primary">{a.cta} &rarr;</p>
+              <p className="mt-4 text-sm font-medium text-link">{a.cta} &rarr;</p>
             </Card>
           ))}
         </div>
