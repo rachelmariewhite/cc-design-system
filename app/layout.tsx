@@ -13,6 +13,18 @@ const pragmatica = localFont({
   fallback: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
 })
 
+// Secondary brand font (Mark Simonson Bookmania), served from the licensed
+// files. Bookman Old Style / Georgia are the system fallbacks while it swaps in.
+const bookmania = localFont({
+  src: [
+    { path: '../public/fonts/Bookmania-Regular.woff2', weight: '400', style: 'normal' },
+    { path: '../public/fonts/Bookmania-Bold.woff2', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-bookmania',
+  display: 'swap',
+  fallback: ['Bookman Old Style', 'Georgia', 'serif'],
+})
+
 export const metadata: Metadata = {
   title: 'Cerrowire Connect — Design System',
   description:
@@ -40,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${pragmatica.variable} bg-background`}>
+    <html lang="en" className={`${pragmatica.variable} ${bookmania.variable} bg-background`}>
       <body className="font-sans antialiased">{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body>
     </html>
   )

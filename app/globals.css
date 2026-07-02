@@ -7,7 +7,7 @@
 @theme inline {
   --font-sans: var(--font-pragmatica), 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-heading: var(--font-pragmatica), 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-serif: 'Bookman Old Style', 'Bookman', 'URW Bookman L', Georgia, serif;
+  --font-serif: var(--font-bookmania), 'Bookman Old Style', 'Bookman', 'URW Bookman L', Georgia, serif;
   --font-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
