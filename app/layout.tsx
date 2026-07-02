@@ -1,15 +1,16 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Archivo } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 
-// Pragmatica (brand font) fails to decode in some browsers, so we serve a
-// close, highly readable Google-hosted grotesque as the web fallback.
-const pragmatica = Archivo({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+// Brand font. The source TTF had a malformed cmap that failed to decode in
+// Chrome; it has been recompiled to a valid WOFF2. Helvetica Neue is the
+// brand-specified system fallback while the font swaps in (display: swap).
+const pragmatica = localFont({
+  src: '../public/fonts/Pragmatica.woff2',
   variable: '--font-pragmatica',
   display: 'swap',
+  fallback: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
 })
 
 export const metadata: Metadata = {
