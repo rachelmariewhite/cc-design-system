@@ -7,7 +7,8 @@
 @theme inline {
   --font-sans: var(--font-pragmatica), 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-heading: var(--font-pragmatica), 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-serif: 'Bookman Old Style', 'Bookman', 'URW Bookman L', Georgia, serif;
+  --font-condensed: var(--font-pragmatica-condensed), 'Helvetica Neue Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: var(--font-bookmania), 'Bookman Old Style', 'Bookman', 'URW Bookman L', Georgia, serif;
   --font-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
@@ -18,6 +19,7 @@
   --color-brand-stone: var(--brand-stone);
   --color-brand-taupe: var(--brand-taupe);
   --color-brand-charcoal: var(--brand-charcoal);
+  --color-brand-black: var(--brand-black);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -43,6 +45,7 @@
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+  --color-link: var(--link);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -68,6 +71,8 @@
   --popover-foreground: #373331;
   --primary: #f0721f;
   --primary-foreground: #ffffff;
+  /* Accessible deep-orange for inline text/links on light surfaces (WCAG AA: 5.7:1 on cream). */
+  --link: #9a4a12;
   --secondary: #f2ede9;
   --secondary-foreground: #373331;
   --muted: #f2ede9;
@@ -94,6 +99,7 @@
   --brand-stone: #d9d2cd;
   --brand-taupe: #a19893;
   --brand-charcoal: #373331;
+  --brand-black: #000000;
   --sidebar: #373331;
   --sidebar-foreground: #f7f4f1;
   --sidebar-primary: #f0721f;
@@ -114,6 +120,8 @@
   --popover-foreground: #f7f4f1;
   --primary: #f0721f;
   --primary-foreground: #ffffff;
+  /* On dark surfaces the brand orange already exceeds AA, and a touch brighter aids legibility. */
+  --link: #ff8a3d;
   --secondary: #4a4543;
   --secondary-foreground: #f7f4f1;
   --muted: #4a4543;
@@ -139,6 +147,7 @@
   --brand-stone: #d9d2cd;
   --brand-taupe: #a19893;
   --brand-charcoal: #373331;
+  --brand-black: #000000;
   --sidebar: #1f1c1b;
   --sidebar-foreground: #f7f4f1;
   --sidebar-primary: #f0721f;
@@ -225,6 +234,10 @@
   font-size: 0.8125rem; /* 13px */
   line-height: 1.6875rem; /* 27px */
   color: var(--muted-foreground);
+}
+
+@utility font-condensed {
+  font-family: var(--font-condensed);
 }
 
 @utility eyebrow {

@@ -22,8 +22,8 @@ export function Typography() {
         <Panel className="p-6">
           <div className="mb-2 flex items-center justify-between gap-2">
             <Eyebrow>Primary Typeface</Eyebrow>
-            <DownloadButton href="/fonts/Pragmatica.ttf" download="Pragmatica.ttf">
-              TTF
+            <DownloadButton href="/fonts/Pragmatica-Book.otf" download="Pragmatica-Book.otf">
+              OTF
             </DownloadButton>
           </div>
           <p className="font-heading text-4xl font-bold text-foreground">Pragmatica</p>
@@ -31,7 +31,12 @@ export function Typography() {
           <p className="mt-3 font-sans text-2xl text-foreground">AaBbCcDd 1234567890</p>
         </Panel>
         <Panel className="p-6">
-          <Eyebrow className="mb-2">Secondary Typeface</Eyebrow>
+          <div className="mb-2 flex items-center justify-between gap-2">
+            <Eyebrow>Secondary Typeface</Eyebrow>
+            <DownloadButton href="/fonts/Bookmania-Black.otf" download="Bookmania-Black.otf">
+              OTF
+            </DownloadButton>
+          </div>
           <p className="font-serif text-4xl font-bold text-foreground">Bookmania</p>
           <p className="ds-meta">Black. Fallback: Bookman.</p>
           <p className="mt-3 font-serif text-2xl text-foreground">AaBbCcDd 1234567890</p>
@@ -58,7 +63,7 @@ export function Typography() {
           </div>
           <p className="ds-body min-w-0 flex-1 text-foreground">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur orci suscipit,
-            consequat arcu a, tempor tellus. <span className="text-primary underline">Text link.</span>
+            consequat arcu a, tempor tellus. <span className="text-link font-medium underline">Text link.</span>
           </p>
         </div>
         <div className="flex flex-col gap-2 p-5 md:flex-row md:items-baseline md:justify-between md:gap-8">
@@ -82,7 +87,7 @@ export function Typography() {
             <p className="text-sm font-semibold text-foreground">Small Button</p>
             <Spec>Pragmatica Condensed Book caps · 15 / 30</Spec>
           </div>
-          <p className="min-w-0 flex-1 text-[15px] font-normal uppercase leading-[30px] tracking-wide text-primary">
+          <p className="min-w-0 flex-1 font-condensed text-[15px] font-normal uppercase leading-[30px] tracking-wide text-primary">
             Secondary Button
           </p>
         </div>
