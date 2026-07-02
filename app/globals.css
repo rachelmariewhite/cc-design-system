@@ -7,6 +7,7 @@
 @theme inline {
   --font-sans: var(--font-pragmatica), 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-heading: var(--font-pragmatica), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-condensed: var(--font-pragmatica-condensed), 'Helvetica Neue Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-serif: var(--font-bookmania), 'Bookman Old Style', 'Bookman', 'URW Bookman L', Georgia, serif;
   --font-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --color-success: var(--success);
@@ -230,6 +231,10 @@
   font-size: 0.8125rem; /* 13px */
   line-height: 1.6875rem; /* 27px */
   color: var(--muted-foreground);
+}
+
+@utility font-condensed {
+  font-family: var(--font-condensed);
 }
 
 @utility eyebrow {

@@ -112,7 +112,7 @@ export default function Page() {
                   <DownloadButton href="/images/cerrowire-connect-icon.png" download="cerrowire-connect-icon.png">
                     App Icon
                   </DownloadButton>
-                  <DownloadButton href="/fonts/Pragmatica.ttf" download="Pragmatica.ttf">
+                  <DownloadButton href="/fonts/Pragmatica-Book.otf" download="Pragmatica-Book.otf">
                     Font
                   </DownloadButton>
                 </div>
