@@ -26,10 +26,13 @@ const pragmaticaCondensed = localFont({
 
 // Secondary brand font (Mark Simonson Bookmania), served from the licensed
 // files. Bookman Old Style / Georgia are the system fallbacks while it swaps in.
+// The styleguide specifies Bookmania Black as the secondary web font, so the
+// display weight (bold) maps to Black; Regular is kept for lighter serif text.
 const bookmania = localFont({
   src: [
     { path: '../public/fonts/Bookmania-Regular.woff2', weight: '400', style: 'normal' },
-    { path: '../public/fonts/Bookmania-Bold.woff2', weight: '700', style: 'normal' },
+    { path: '../public/fonts/Bookmania-Black.woff2', weight: '700', style: 'normal' },
+    { path: '../public/fonts/Bookmania-Black.woff2', weight: '900', style: 'normal' },
   ],
   variable: '--font-bookmania',
   display: 'swap',

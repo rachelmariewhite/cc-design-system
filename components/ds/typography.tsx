@@ -33,12 +33,12 @@ export function Typography() {
         <Panel className="p-6">
           <div className="mb-2 flex items-center justify-between gap-2">
             <Eyebrow>Secondary Typeface</Eyebrow>
-            <DownloadButton href="/fonts/Bookmania-Regular.otf" download="Bookmania-Regular.otf">
+            <DownloadButton href="/fonts/Bookmania-Black.otf" download="Bookmania-Black.otf">
               OTF
             </DownloadButton>
           </div>
           <p className="font-serif text-4xl font-bold text-foreground">Bookmania</p>
-          <p className="ds-meta">Regular · Bold. Fallback: Bookman Old Style.</p>
+          <p className="ds-meta">Black. Fallback: Bookman.</p>
           <p className="mt-3 font-serif text-2xl text-foreground">AaBbCcDd 1234567890</p>
         </Panel>
       </div>

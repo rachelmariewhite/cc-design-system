@@ -15,7 +15,7 @@ interface Swatch {
 
 const brandColors: Swatch[] = [
   { name: "PMS 151 Orange", token: "bg-primary", value: "#F0721F", text: "text-primary-foreground" },
-  { name: "Black", token: "bg-foreground", value: "#000000", text: "text-background" },
+  { name: "Black", token: "bg-brand-black", value: "#000000", text: "text-background" },
   { name: "White", token: "bg-card", value: "#FFFFFF", text: "text-card-foreground", border: true },
 ]
 
