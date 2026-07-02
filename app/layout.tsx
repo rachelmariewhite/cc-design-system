@@ -1,10 +1,13 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import localFont from 'next/font/local'
+import { Archivo } from 'next/font/google'
 import './globals.css'
 
-const pragmatica = localFont({
-  src: '../public/fonts/Pragmatica.ttf',
+// Pragmatica (brand font) fails to decode in some browsers, so we serve a
+// close, highly readable Google-hosted grotesque as the web fallback.
+const pragmatica = Archivo({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-pragmatica',
   display: 'swap',
 })
