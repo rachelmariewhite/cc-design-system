@@ -61,6 +61,89 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* ==========================================================================
+   Cerrowire Connect Unified Typography
+   One family (Pragmatica), two weights (400 Book / 700 Bold),
+   12 text roles + 3 button roles. Each `text-*` role sets size, line height,
+   tracking and weight in one class. Families are bound above via next/font
+   variables, since next/font hashes the literal family names.
+   ========================================================================== */
+@theme {
+  /* Pragmatica ships Book (400) and Bold (700) only. In-between names are
+     pinned so legacy classes render predictably during migration:
+     medium -> Book, semibold/extrabold/black -> Bold. Remove once migrated. */
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-medium: 400;
+  --font-weight-semibold: 700;
+  --font-weight-extrabold: 700;
+  --font-weight-black: 700;
+
+  /* Brand H1 hero, marketing */
+  --text-display: 3.75rem; /* 60 */
+  --text-display--line-height: 3.75rem; /* 60 */
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 700;
+
+  /* Welcome / dashboard greeting (brand H2) */
+  --text-hero: 2.5rem; /* 40 */
+  --text-hero--line-height: 3rem; /* 48 */
+  --text-hero--letter-spacing: -0.01em;
+  --text-hero--font-weight: 700;
+
+  /* Page title desktop */
+  --text-title: 1.875rem; /* 30 */
+  --text-title--line-height: 2.25rem; /* 36 */
+  --text-title--letter-spacing: -0.025em;
+  --text-title--font-weight: 700;
+
+  /* Page title mobile, large stats */
+  --text-title-sm: 1.5rem; /* 24 */
+  --text-title-sm--line-height: 2rem; /* 32 */
+  --text-title-sm--letter-spacing: -0.02em;
+  --text-title-sm--font-weight: 700;
+
+  /* Slideover + modal titles, card section titles */
+  --text-heading: 1.25rem; /* 20 */
+  --text-heading--line-height: 1.75rem; /* 28 */
+  --text-heading--letter-spacing: -0.01em;
+  --text-heading--font-weight: 700;
+
+  /* Popover titles, card titles, empty states */
+  --text-subheading: 1rem; /* 16 */
+  --text-subheading--line-height: 1.5rem; /* 24 */
+  --text-subheading--font-weight: 700;
+
+  /* Intro paragraphs (auth / landing) */
+  --text-lead: 1.125rem; /* 18 */
+  --text-lead--line-height: 1.75rem; /* 28 */
+  --text-lead--font-weight: 400;
+
+  /* Default UI text, menu items, inputs, values */
+  --text-body: 0.875rem; /* 14 */
+  --text-body--line-height: 1.25rem; /* 20 */
+  --text-body--font-weight: 400;
+
+  /* Table cells, dense lists */
+  --text-table: 0.8125rem; /* 13 */
+  --text-table--line-height: 1.25rem; /* 20 */
+  --text-table--font-weight: 400;
+
+  /* Field labels, meta, helper, tooltips; table headers with font-bold */
+  --text-caption: 0.75rem; /* 12 */
+  --text-caption--line-height: 1rem; /* 16 */
+  --text-caption--font-weight: 400;
+
+  /* Counter badges, row markers only */
+  --text-micro: 0.625rem; /* 10 */
+  --text-micro--line-height: 0.875rem; /* 14 */
+  --text-micro--letter-spacing: 0.02em;
+  --text-micro--font-weight: 700;
+
+  /* Long-form leading for overlay descriptions: text-body leading-relaxed = 14/22 */
+  --leading-relaxed: 1.5714;
+}
+
 :root {
   color-scheme: light;
   --background: #f7f4f1;
@@ -162,11 +245,102 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
-    @apply font-sans;
+    font-family: var(--font-sans);
+  }
+  body {
+    @apply bg-background text-body text-foreground;
+  }
+  h1 {
+    @apply text-title-sm md:text-title;
+  }
+  h2 {
+    @apply text-heading;
+  }
+  h3 {
+    @apply text-subheading;
+  }
+}
+
+/* Roles that need text-transform (not expressible in @theme) */
+@utility text-eyebrow {
+  font-size: 0.6875rem; /* 11 */
+  line-height: 1rem; /* 16 */
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@utility text-btn-lg {
+  font-family: var(--font-sans);
+  font-size: 1.25rem; /* 20 */
+  line-height: 1.625rem; /* 26 */
+  letter-spacing: 0.025em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@utility text-btn {
+  font-family: var(--font-sans);
+  font-size: 0.875rem; /* 14 */
+  line-height: 1.25rem; /* 20 */
+  letter-spacing: 0.025em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@utility text-btn-sm {
+  font-family: var(--font-condensed);
+  font-size: 0.8125rem; /* 13 */
+  line-height: 1rem; /* 16 */
+  letter-spacing: 0.03em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Overlay slots (shadcn/Radix data-slot hooks) so existing Sheet / Dialog /
+   Popover / DropdownMenu / Tooltip components pick up the spec without
+   touching every call site. */
+@layer components {
+  [data-slot='sheet-title'],
+  [data-slot='dialog-title'],
+  [data-slot='alert-dialog-title'] {
+    @apply text-heading;
+  }
+  [data-slot='sheet-description'],
+  [data-slot='dialog-description'] {
+    @apply text-body text-muted-foreground;
+  }
+  [data-slot='popover-content'] h2,
+  [data-slot='popover-content'] h3 {
+    @apply text-subheading;
+  }
+  [data-slot='dropdown-menu-item'],
+  [data-slot='select-item'],
+  [data-slot='command-item'] {
+    @apply text-body;
+  }
+  [data-slot='dropdown-menu-label'],
+  [data-slot='select-label'] {
+    @apply text-eyebrow text-muted-foreground;
+  }
+  [data-slot='dropdown-menu-shortcut'] {
+    @apply text-caption;
+  }
+  [data-slot='tooltip-content'] {
+    @apply text-caption;
+  }
+  [data-slot='table-head'] {
+    @apply text-caption font-bold;
+  }
+  [data-slot='table-cell'] {
+    @apply text-table;
+  }
+  [data-slot='label'] {
+    @apply text-caption text-muted-foreground;
+  }
+  [data-slot='badge'] {
+    @apply text-caption font-bold;
   }
 }
 
