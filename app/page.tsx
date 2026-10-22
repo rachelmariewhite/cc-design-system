@@ -6,6 +6,10 @@ import { PatternShowcase } from "@/components/ds/pattern-showcase"
 import { LogoShowcase } from "@/components/ds/logo-showcase"
 import { RadiusShowcase } from "@/components/ds/radius-showcase"
 import { ImageryShowcase } from "@/components/ds/imagery-showcase"
+import { HomepageColors } from "@/components/ds/homepage-colors"
+import { BadgeSystem } from "@/components/ds/badge-system"
+import { BrandAudit } from "@/components/ds/brand-audit"
+import { UsageGuidelines } from "@/components/ds/usage-guidelines"
 import { Logo, LogoPlate } from "@/components/ds/logo"
 import { DownloadButton, Eyebrow, Panel } from "@/components/ds/primitives"
 
@@ -13,11 +17,15 @@ const nav = [
   { id: "foundations", label: "Foundations" },
   { id: "logo", label: "Logo" },
   { id: "colors", label: "Colors" },
+  { id: "homepage-colors", label: "Homepage Colors" },
+  { id: "badges", label: "Badges" },
   { id: "typography", label: "Typography" },
   { id: "radius", label: "Shape & Elevation" },
   { id: "components", label: "Components" },
   { id: "patterns", label: "Patterns" },
   { id: "imagery", label: "In Product" },
+  { id: "guidelines", label: "Guidelines" },
+  { id: "audit", label: "Audit" },
 ]
 
 const heroFacts = [
@@ -36,11 +44,15 @@ const sections = [
   { id: "foundations", eyebrow: "Foundations", title: "Principles", description: "Cerrowire Connect pairs a trustworthy, industrial identity with a friendly, approachable interface — built for distributors who need to move fast.", node: <PrinciplesGrid /> },
   { id: "logo", eyebrow: "Foundations", title: "Logo", description: "The Cerrowire Connect lockup combines the Cerrowire wordmark, the Connect chain-link mark, and the Service Made Simple tagline.", node: <LogoShowcase /> },
   { id: "colors", eyebrow: "Foundations", title: "Color", description: "Black, White, and PMS 151 Orange (#F0721F) form the core brand. An expanded digital palette adds warm neutrals for on-screen range. Click any swatch to copy its value.", node: <ColorPalette /> },
+  { id: "homepage-colors", eyebrow: "Foundations", title: "Homepage Colors", description: "The colors used on the Connect homepage: the app shell and the five quick-link tones. Each color comes with the reason it was chosen.", node: <HomepageColors /> },
+  { id: "badges", eyebrow: "Foundations", title: "Badges", description: "Every status has one tone, and that tone means the same thing on every screen. All badge text meets WCAG AA on its tint.", node: <BadgeSystem /> },
   { id: "typography", eyebrow: "Foundations", title: "Typography", description: "Pragmatica is primary (Helvetica Neue fallback); Bookmania is secondary (Bookman fallback). The scale follows the Cerrowire digital style guide.", node: <Typography /> },
   { id: "radius", eyebrow: "Foundations", title: "Shape & Elevation", description: "Soft rounded corners echo the wire-inspired logo. Cards use rounded-xl; pills and primary buttons use fully rounded ends.", node: <RadiusShowcase /> },
   { id: "components", eyebrow: "Library", title: "Components", description: "Core building blocks styled to the Cerrowire theme — all-caps rounded buttons, badges, and form controls.", node: <ComponentShowcase /> },
   { id: "patterns", eyebrow: "Library", title: "Patterns", description: "Composite patterns lifted straight from the Connect dashboard — overview stats and quick actions.", node: <PatternShowcase /> },
   { id: "imagery", eyebrow: "Library", title: "In Product", description: "The system in context across the Connect desktop dashboard and the mobile app.", node: <ImageryShowcase /> },
+  { id: "guidelines", eyebrow: "Usage", title: "Design Guidelines", description: "Do and don’t rules for applying the Cerrowire brand in product, using the same format as Webflow’s brand guidelines.", node: <UsageGuidelines /> },
+  { id: "audit", eyebrow: "Usage", title: "Brand Audit", description: "Issues found on the Connect clone and how this design system resolves them.", node: <BrandAudit /> },
 ]
 
 function PrinciplesGrid() {

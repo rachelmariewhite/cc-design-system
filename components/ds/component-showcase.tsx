@@ -74,13 +74,16 @@ export function ComponentShowcase() {
 
       <Block title="Badges">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge>In transit</Badge>
-          <Badge variant="secondary">Requested</Badge>
-          <Badge variant="outline">Draft</Badge>
-          <Badge className="bg-success text-success-foreground">Delivered</Badge>
-          <Badge className="bg-warning text-warning-foreground">Pending</Badge>
-          <Badge variant="destructive">Backordered</Badge>
+          <Badge className="rounded-full border-transparent bg-tone-blue-tint text-tone-blue-text">In Transit</Badge>
+          <Badge className="rounded-full border-transparent bg-tone-green-tint text-tone-green-text">Delivered</Badge>
+          <Badge className="rounded-full border-transparent bg-tone-amber-tint text-tone-amber-text">Pending</Badge>
+          <Badge className="rounded-full border-transparent bg-tone-red-tint text-tone-red-text">Backordered</Badge>
+          <Badge className="rounded-full border-transparent bg-tone-orange-tint text-tone-orange-text">Action Required</Badge>
+          <Badge className="rounded-full border-transparent bg-tone-neutral-tint text-tone-neutral-text">Draft</Badge>
         </div>
+        <p className="ds-meta mt-3">
+          Full meanings are in <a href="#badges" className="font-medium text-link hover:underline">Badges</a>.
+        </p>
       </Block>
 
       <Block title="Form fields">
