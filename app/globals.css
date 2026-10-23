@@ -20,6 +20,30 @@
   --color-brand-taupe: var(--brand-taupe);
   --color-brand-charcoal: var(--brand-charcoal);
   --color-brand-black: var(--brand-black);
+  --color-tone-green-surface: var(--tone-green-surface);
+  --color-tone-green-tint: var(--tone-green-tint);
+  --color-tone-green-icon: var(--tone-green-icon);
+  --color-tone-green-text: var(--tone-green-text);
+  --color-tone-amber-surface: var(--tone-amber-surface);
+  --color-tone-amber-tint: var(--tone-amber-tint);
+  --color-tone-amber-icon: var(--tone-amber-icon);
+  --color-tone-amber-text: var(--tone-amber-text);
+  --color-tone-blue-surface: var(--tone-blue-surface);
+  --color-tone-blue-tint: var(--tone-blue-tint);
+  --color-tone-blue-icon: var(--tone-blue-icon);
+  --color-tone-blue-text: var(--tone-blue-text);
+  --color-tone-red-surface: var(--tone-red-surface);
+  --color-tone-red-tint: var(--tone-red-tint);
+  --color-tone-red-icon: var(--tone-red-icon);
+  --color-tone-red-text: var(--tone-red-text);
+  --color-tone-orange-surface: var(--tone-orange-surface);
+  --color-tone-orange-tint: var(--tone-orange-tint);
+  --color-tone-orange-icon: var(--tone-orange-icon);
+  --color-tone-orange-text: var(--tone-orange-text);
+  --color-tone-neutral-surface: var(--tone-neutral-surface);
+  --color-tone-neutral-tint: var(--tone-neutral-tint);
+  --color-tone-neutral-icon: var(--tone-neutral-icon);
+  --color-tone-neutral-text: var(--tone-neutral-text);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -61,6 +85,89 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* ==========================================================================
+   Cerrowire Connect Unified Typography
+   One family (Pragmatica), two weights (400 Book / 700 Bold),
+   12 text roles + 3 button roles. Each `text-*` role sets size, line height,
+   tracking and weight in one class. Families are bound above via next/font
+   variables, since next/font hashes the literal family names.
+   ========================================================================== */
+@theme {
+  /* Pragmatica weights: Book 400, Bold 700, Black 900 (Figma headings).
+     In-between names are pinned so legacy classes render predictably:
+     medium -> Book, semibold/extrabold -> Bold. */
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-medium: 400;
+  --font-weight-semibold: 700;
+  --font-weight-extrabold: 700;
+  --font-weight-black: 900;
+
+  /* Brand H1 hero, marketing */
+  --text-display: 3.75rem; /* 60 */
+  --text-display--line-height: 3.75rem; /* 60 */
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 700;
+
+  /* Welcome / dashboard greeting (brand H2) */
+  --text-hero: 2.5rem; /* 40 */
+  --text-hero--line-height: 3rem; /* 48 */
+  --text-hero--letter-spacing: -0.01em;
+  --text-hero--font-weight: 700;
+
+  /* Page title desktop */
+  --text-title: 1.875rem; /* 30 */
+  --text-title--line-height: 2.25rem; /* 36 */
+  --text-title--letter-spacing: -0.025em;
+  --text-title--font-weight: 700;
+
+  /* Page title mobile, large stats */
+  --text-title-sm: 1.5rem; /* 24 */
+  --text-title-sm--line-height: 2rem; /* 32 */
+  --text-title-sm--letter-spacing: -0.02em;
+  --text-title-sm--font-weight: 700;
+
+  /* Slideover + modal titles, card section titles */
+  --text-heading: 1.25rem; /* 20 */
+  --text-heading--line-height: 1.75rem; /* 28 */
+  --text-heading--letter-spacing: -0.01em;
+  --text-heading--font-weight: 700;
+
+  /* Popover titles, card titles, empty states */
+  --text-subheading: 1rem; /* 16 */
+  --text-subheading--line-height: 1.5rem; /* 24 */
+  --text-subheading--font-weight: 700;
+
+  /* Intro paragraphs (auth / landing) */
+  --text-lead: 1.125rem; /* 18 */
+  --text-lead--line-height: 1.75rem; /* 28 */
+  --text-lead--font-weight: 400;
+
+  /* Default UI text, menu items, inputs, values */
+  --text-body: 0.875rem; /* 14 */
+  --text-body--line-height: 1.25rem; /* 20 */
+  --text-body--font-weight: 400;
+
+  /* Table cells, dense lists */
+  --text-table: 0.8125rem; /* 13 */
+  --text-table--line-height: 1.25rem; /* 20 */
+  --text-table--font-weight: 400;
+
+  /* Field labels, meta, helper, tooltips; table headers with font-bold */
+  --text-caption: 0.75rem; /* 12 */
+  --text-caption--line-height: 1rem; /* 16 */
+  --text-caption--font-weight: 400;
+
+  /* Counter badges, row markers only */
+  --text-micro: 0.625rem; /* 10 */
+  --text-micro--line-height: 0.875rem; /* 14 */
+  --text-micro--letter-spacing: 0.02em;
+  --text-micro--font-weight: 700;
+
+  /* Long-form leading for overlay descriptions: text-body leading-relaxed = 14/22 */
+  --leading-relaxed: 1.5714;
+}
+
 :root {
   color-scheme: light;
   --background: #f7f4f1;
@@ -83,8 +190,35 @@
   --destructive-foreground: #ffffff;
   --success: #2d8c5a;
   --success-foreground: #ffffff;
-  --warning: #f0721f;
+  /* Amber, not brand orange: status must never be confused with brand or CTA color. */
+  --warning: #b45309;
   --warning-foreground: #ffffff;
+  /* Homepage tones (quick links + badges). surface = card fill, tint = icon box
+     & border, icon >= 3:1 on tint, text >= 4.5:1 on tint. */
+  --tone-green-surface: #ecfdf5;
+  --tone-green-tint: #d1fae5;
+  --tone-green-icon: #059669;
+  --tone-green-text: #065f46;
+  --tone-amber-surface: #fffbeb;
+  --tone-amber-tint: #fef3c7;
+  --tone-amber-icon: #b45309;
+  --tone-amber-text: #92400e;
+  --tone-blue-surface: #eff6ff;
+  --tone-blue-tint: #dbeafe;
+  --tone-blue-icon: #1d4ed8;
+  --tone-blue-text: #1e40af;
+  --tone-red-surface: #fef2f2;
+  --tone-red-tint: #fee2e2;
+  --tone-red-icon: #dc2626;
+  --tone-red-text: #991b1b;
+  --tone-orange-surface: #fff7ed;
+  --tone-orange-tint: #ffedd5;
+  --tone-orange-icon: #ea580c;
+  --tone-orange-text: #9a3412;
+  --tone-neutral-surface: #f7f4f1;
+  --tone-neutral-tint: #f2ede9;
+  --tone-neutral-icon: #4a4543;
+  --tone-neutral-text: #373331;
   --border: #d9d2cd;
   --input: #d9d2cd;
   --ring: #f0721f;
@@ -132,8 +266,32 @@
   --destructive-foreground: #ffffff;
   --success: #2d8c5a;
   --success-foreground: #ffffff;
-  --warning: #f0721f;
-  --warning-foreground: #ffffff;
+  --warning: #d97706;
+  --warning-foreground: #1f1c1b;
+  --tone-green-surface: #052e22;
+  --tone-green-tint: #064e3b;
+  --tone-green-icon: #34d399;
+  --tone-green-text: #6ee7b7;
+  --tone-amber-surface: #331a05;
+  --tone-amber-tint: #78350f;
+  --tone-amber-icon: #fbbf24;
+  --tone-amber-text: #fcd34d;
+  --tone-blue-surface: #111c3d;
+  --tone-blue-tint: #1e3a8a;
+  --tone-blue-icon: #60a5fa;
+  --tone-blue-text: #93c5fd;
+  --tone-red-surface: #3a0d0d;
+  --tone-red-tint: #7f1d1d;
+  --tone-red-icon: #f87171;
+  --tone-red-text: #fca5a5;
+  --tone-orange-surface: #3a1608;
+  --tone-orange-tint: #7c2d12;
+  --tone-orange-icon: #fb923c;
+  --tone-orange-text: #fdba74;
+  --tone-neutral-surface: #2a2624;
+  --tone-neutral-tint: #4a4543;
+  --tone-neutral-icon: #d9d2cd;
+  --tone-neutral-text: #f7f4f1;
   --border: #4a4543;
   --input: #4a4543;
   --ring: #f0721f;
@@ -162,77 +320,195 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
-    @apply font-sans;
+    font-family: var(--font-sans);
+  }
+  body {
+    @apply bg-background text-body text-foreground;
+  }
+  h1 {
+    @apply text-title-sm md:text-title;
+  }
+  h2 {
+    @apply text-heading;
+  }
+  h3 {
+    @apply text-subheading;
   }
 }
 
-/* Typography scale per Cerrowire Digital Style Guide */
+/* Roles that need text-transform (not expressible in @theme) */
+@utility text-eyebrow {
+  font-size: 0.6875rem; /* 11 */
+  line-height: 1rem; /* 16 */
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@utility text-btn-lg {
+  font-family: var(--font-sans);
+  font-size: 1.25rem; /* 20 */
+  line-height: 1.625rem; /* 26 */
+  letter-spacing: 0.025em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@utility text-btn {
+  font-family: var(--font-sans);
+  font-size: 0.875rem; /* 14 */
+  line-height: 1.25rem; /* 20 */
+  letter-spacing: 0.025em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@utility text-btn-sm {
+  font-family: var(--font-condensed);
+  font-size: 0.8125rem; /* 13 */
+  line-height: 1rem; /* 16 */
+  letter-spacing: 0.03em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Overlay slots (shadcn/Radix data-slot hooks) so existing Sheet / Dialog /
+   Popover / DropdownMenu / Tooltip components pick up the spec without
+   touching every call site. */
+@layer components {
+  [data-slot='sheet-title'],
+  [data-slot='dialog-title'],
+  [data-slot='alert-dialog-title'] {
+    @apply text-heading;
+  }
+  [data-slot='sheet-description'],
+  [data-slot='dialog-description'] {
+    @apply text-body text-muted-foreground;
+  }
+  [data-slot='popover-content'] h2,
+  [data-slot='popover-content'] h3 {
+    @apply text-subheading;
+  }
+  [data-slot='dropdown-menu-item'],
+  [data-slot='select-item'],
+  [data-slot='command-item'] {
+    @apply text-body;
+  }
+  [data-slot='dropdown-menu-label'],
+  [data-slot='select-label'] {
+    @apply text-eyebrow text-muted-foreground;
+  }
+  [data-slot='dropdown-menu-shortcut'] {
+    @apply text-caption;
+  }
+  [data-slot='tooltip-content'] {
+    @apply text-caption;
+  }
+  [data-slot='table-head'] {
+    @apply text-caption font-bold;
+  }
+  [data-slot='table-cell'] {
+    @apply text-table;
+  }
+  [data-slot='label'] {
+    @apply text-caption text-muted-foreground;
+  }
+  [data-slot='badge'] {
+    @apply text-caption font-bold;
+  }
+}
+
+/* Content type scale — source of truth: Figma CerrowireConnect-V3,
+   "2. TYPOGRAPHY" (node 213:2866). Headings use Pragmatica Black (900),
+   text uses Pragmatica Book (400). */
 @utility font-heading {
   font-family: var(--font-heading);
 }
 
 @utility ds-h1 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 3.75rem; /* 60px */
-  line-height: 1; /* 60px */
+  font-weight: 900;
+  font-size: 2.75rem; /* 44 */
+  line-height: 1; /* 44 */
   letter-spacing: -0.02em;
 }
 
 @utility ds-h2 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 2.5rem; /* 40px */
-  line-height: 3.125rem; /* 50px */
+  font-weight: 900;
+  font-size: 2rem; /* 32 */
+  line-height: 1.1; /* 35.2 */
   letter-spacing: -0.01em;
 }
 
 @utility ds-h3 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.5625rem; /* 25px */
-  line-height: 2.375rem; /* 38px */
+  font-weight: 900;
+  font-size: 1.5rem; /* 24 */
+  line-height: 1.3; /* 31.2 */
 }
 
 @utility ds-h4 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.4375rem; /* 23px */
-  line-height: 2.1875rem; /* 35px */
+  font-weight: 900;
+  font-size: 1.125rem; /* 18 */
+  line-height: 1.3; /* 23.4 */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 @utility ds-h5 {
   font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 1.25rem; /* 20px */
-  line-height: 1.625rem; /* 26px */
+  font-weight: 900;
+  font-size: 1rem; /* 16 */
+  line-height: 1.4; /* 22.4 */
 }
 
 @utility ds-h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.9375rem; /* 15px */
-  line-height: 1.1875rem; /* 19px */
-  letter-spacing: 0.06em;
-  text-transform: capitalize;
+  font-weight: 900;
+  font-size: 0.8125rem; /* 13 */
+  line-height: 1.3; /* 16.9 */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 @utility ds-body {
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 1.125rem; /* 18px */
-  line-height: 2.25rem; /* 36px */
+  font-size: 1rem; /* 16 */
+  line-height: 1.7; /* 27.2 */
 }
 
+/* Figma colors subtitles #F0721F; that fails AA as small text on cream, so the
+   color is left to the call site (text-link for AA, text-primary on dark). */
+@utility ds-subtitle {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.8125rem; /* 13 */
+  line-height: 1.4; /* 18.2 */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Figma uses #A19893 for meta and labels (2.6:1 on cream); muted-foreground
+   keeps the same role at AA contrast. */
 @utility ds-meta {
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 0.8125rem; /* 13px */
-  line-height: 1.6875rem; /* 27px */
+  font-size: 0.75rem; /* 12 */
+  line-height: 1.6; /* 19.2 */
+  color: var(--muted-foreground);
+}
+
+@utility ds-label {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.6875rem; /* 11 */
+  line-height: 1.4; /* 15.4 */
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--muted-foreground);
 }
 
@@ -240,10 +516,12 @@
   font-family: var(--font-condensed);
 }
 
+/* Section title, Figma "div.section-title": 12 / Black / 0.1em / uppercase */
 @utility eyebrow {
-  font-weight: 700;
+  font-weight: 900;
   font-size: 0.75rem;
+  line-height: 1.4;
   letter-spacing: 0.1em;
-  text-transform: capitalize;
+  text-transform: uppercase;
   color: var(--muted-foreground);
 }

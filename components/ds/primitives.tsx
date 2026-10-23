@@ -34,7 +34,7 @@ export function Eyebrow({ children, className }: { children: ReactNode; classNam
   return <p className={cn("eyebrow", className)}>{children}</p>
 }
 
-/** Standard rounded surface used across the design system. */
+/** Standard rounded surface used across the guidelines. */
 export function Panel({
   children,
   className,
