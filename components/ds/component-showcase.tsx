@@ -15,6 +15,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Eyebrow } from "@/components/ds/primitives"
 import { cn } from "@/lib/utils"
+import { Truck } from "lucide-react"
 import type { ReactNode } from "react"
 
 /** Reusable primary CTA — Pragmatica, all caps, fully rounded. */
@@ -33,6 +34,30 @@ export function SecondaryButton({ className, ...props }: React.ComponentProps<ty
       )}
       {...props}
     />
+  )
+}
+
+/**
+ * Order-tracking table action, matched to the Cerrowire Connect Orders page.
+ * The label uses tone-orange-text instead of brand orange so 12px text passes AA.
+ */
+export function TrackItButton({ className, disabled, children, ...props }: React.ComponentProps<"button">) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        disabled
+          ? "cursor-not-allowed border-border bg-transparent text-muted-foreground"
+          : "border-primary/25 bg-primary/10 text-tone-orange-text hover:bg-primary/15",
+        className,
+      )}
+      {...props}
+    >
+      {!disabled && <Truck className="size-3.5 text-primary" aria-hidden="true" />}
+      {children ?? (disabled ? "Unavailable" : "Track it")}
+    </button>
   )
 }
 
@@ -69,6 +94,15 @@ export function ComponentShowcase() {
           <Button>Default</Button>
           <Button size="lg">Large</Button>
           <Button disabled>Disabled</Button>
+        </div>
+        <Separator className="my-4" />
+        <p className="ds-meta mb-3">
+          Order tracking — table action pill. Shows a truck icon when a shipment can be tracked; falls back to a
+          disabled &ldquo;Unavailable&rdquo; state.
+        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <TrackItButton aria-label="Track order CW100749" />
+          <TrackItButton disabled />
         </div>
       </Block>
 
