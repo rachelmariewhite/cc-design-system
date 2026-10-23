@@ -8,7 +8,6 @@ import { RadiusShowcase } from "@/components/ds/radius-showcase"
 import { ImageryShowcase } from "@/components/ds/imagery-showcase"
 import { HomepageColors } from "@/components/ds/homepage-colors"
 import { BadgeSystem } from "@/components/ds/badge-system"
-import { BrandAudit } from "@/components/ds/brand-audit"
 import { UsageGuidelines } from "@/components/ds/usage-guidelines"
 import { DeveloperReference } from "@/components/ds/developer-reference"
 import { Logo, LogoPlate } from "@/components/ds/logo"
@@ -27,7 +26,6 @@ const nav = [
   { id: "imagery", label: "In Product" },
   { id: "guidelines", label: "Do & Don't" },
   { id: "developers", label: "For Developers" },
-  { id: "audit", label: "Audit" },
 ]
 
 const heroFacts = [
@@ -47,7 +45,7 @@ const sections = [
   { id: "logo", eyebrow: "Foundations", title: "Logo", description: "The Cerrowire Connect lockup combines the Cerrowire wordmark, the Connect chain-link mark, and the Service Made Simple tagline.", node: <LogoShowcase /> },
   { id: "colors", eyebrow: "Foundations", title: "Color", description: "Black, White, and PMS 151 Orange (#F0721F) form the core brand. An expanded digital palette adds warm neutrals for on-screen range. Click any swatch to copy its value.", node: <ColorPalette /> },
   { id: "homepage-colors", eyebrow: "Foundations", title: "Homepage Colors", description: "The colors used on the Connect homepage: the app shell and the five quick-link tones. Each color comes with the reason it was chosen.", node: <HomepageColors /> },
-  { id: "badges", eyebrow: "Foundations", title: "Badges", description: "Every status has one tone, and that tone means the same thing on every screen. All badge text meets WCAG AA on its tint.", node: <BadgeSystem /> },
+  { id: "badges", eyebrow: "Foundations", title: "Badges", description: "Every status has one tone, and that tone means the same thing on every screen.", node: <BadgeSystem /> },
   { id: "typography", eyebrow: "Foundations", title: "Typography", description: "Pragmatica Black and Book carry every screen; Bookmania is for marketing accents. Sizes match the CerrowireConnect-V3 Figma file. Click any class to copy it.", node: <Typography /> },
   { id: "radius", eyebrow: "Foundations", title: "Shape & Elevation", description: "Soft rounded corners echo the wire-inspired logo. Cards use rounded-xl; pills and primary buttons use fully rounded ends.", node: <RadiusShowcase /> },
   { id: "components", eyebrow: "Library", title: "Components", description: "Core building blocks styled to the Cerrowire theme — all-caps rounded buttons, badges, and form controls.", node: <ComponentShowcase /> },
@@ -55,7 +53,6 @@ const sections = [
   { id: "imagery", eyebrow: "Library", title: "In Product", description: "The system in context across the Connect desktop dashboard and the mobile app.", node: <ImageryShowcase /> },
   { id: "guidelines", eyebrow: "Usage", title: "Do & Don't", description: "Rules for applying the Cerrowire brand in product, in the same format as Webflow’s brand guidelines.", node: <UsageGuidelines /> },
   { id: "developers", eyebrow: "Usage", title: "For Developers", description: "Token classes, copy-paste patterns, and a pre-merge checklist so every screen ships consistent.", node: <DeveloperReference /> },
-  { id: "audit", eyebrow: "Usage", title: "Brand Audit", description: "Issues found on the Connect clone and how these guidelines resolve them.", node: <BrandAudit /> },
 ]
 
 function PrinciplesGrid() {
