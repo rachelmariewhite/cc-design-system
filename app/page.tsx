@@ -10,6 +10,7 @@ import { HomepageColors } from "@/components/ds/homepage-colors"
 import { BadgeSystem } from "@/components/ds/badge-system"
 import { BrandAudit } from "@/components/ds/brand-audit"
 import { UsageGuidelines } from "@/components/ds/usage-guidelines"
+import { DeveloperReference } from "@/components/ds/developer-reference"
 import { Logo, LogoPlate } from "@/components/ds/logo"
 import { DownloadButton, Eyebrow, Panel } from "@/components/ds/primitives"
 
@@ -24,7 +25,8 @@ const nav = [
   { id: "components", label: "Components" },
   { id: "patterns", label: "Patterns" },
   { id: "imagery", label: "In Product" },
-  { id: "guidelines", label: "Guidelines" },
+  { id: "guidelines", label: "Do & Don't" },
+  { id: "developers", label: "For Developers" },
   { id: "audit", label: "Audit" },
 ]
 
@@ -46,13 +48,14 @@ const sections = [
   { id: "colors", eyebrow: "Foundations", title: "Color", description: "Black, White, and PMS 151 Orange (#F0721F) form the core brand. An expanded digital palette adds warm neutrals for on-screen range. Click any swatch to copy its value.", node: <ColorPalette /> },
   { id: "homepage-colors", eyebrow: "Foundations", title: "Homepage Colors", description: "The colors used on the Connect homepage: the app shell and the five quick-link tones. Each color comes with the reason it was chosen.", node: <HomepageColors /> },
   { id: "badges", eyebrow: "Foundations", title: "Badges", description: "Every status has one tone, and that tone means the same thing on every screen. All badge text meets WCAG AA on its tint.", node: <BadgeSystem /> },
-  { id: "typography", eyebrow: "Foundations", title: "Typography", description: "Pragmatica is primary (Helvetica Neue fallback); Bookmania is secondary (Bookman fallback). The scale follows the Cerrowire digital style guide.", node: <Typography /> },
+  { id: "typography", eyebrow: "Foundations", title: "Typography", description: "Pragmatica Black and Book carry every screen; Bookmania is for marketing accents. Sizes match the CerrowireConnect-V3 Figma file. Click any class to copy it.", node: <Typography /> },
   { id: "radius", eyebrow: "Foundations", title: "Shape & Elevation", description: "Soft rounded corners echo the wire-inspired logo. Cards use rounded-xl; pills and primary buttons use fully rounded ends.", node: <RadiusShowcase /> },
   { id: "components", eyebrow: "Library", title: "Components", description: "Core building blocks styled to the Cerrowire theme — all-caps rounded buttons, badges, and form controls.", node: <ComponentShowcase /> },
   { id: "patterns", eyebrow: "Library", title: "Patterns", description: "Composite patterns lifted straight from the Connect dashboard — overview stats and quick actions.", node: <PatternShowcase /> },
   { id: "imagery", eyebrow: "Library", title: "In Product", description: "The system in context across the Connect desktop dashboard and the mobile app.", node: <ImageryShowcase /> },
-  { id: "guidelines", eyebrow: "Usage", title: "Design Guidelines", description: "Do and don’t rules for applying the Cerrowire brand in product, using the same format as Webflow’s brand guidelines.", node: <UsageGuidelines /> },
-  { id: "audit", eyebrow: "Usage", title: "Brand Audit", description: "Issues found on the Connect clone and how this design system resolves them.", node: <BrandAudit /> },
+  { id: "guidelines", eyebrow: "Usage", title: "Do & Don't", description: "Rules for applying the Cerrowire brand in product, in the same format as Webflow’s brand guidelines.", node: <UsageGuidelines /> },
+  { id: "developers", eyebrow: "Usage", title: "For Developers", description: "Token classes, copy-paste patterns, and a pre-merge checklist so every screen ships consistent.", node: <DeveloperReference /> },
+  { id: "audit", eyebrow: "Usage", title: "Brand Audit", description: "Issues found on the Connect clone and how these guidelines resolve them.", node: <BrandAudit /> },
 ]
 
 function PrinciplesGrid() {
@@ -76,7 +79,7 @@ export default function Page() {
           <div className="flex items-center gap-3">
             <Logo className="h-7" />
             <span className="hidden h-5 w-px bg-border sm:block" />
-            <span className="hidden text-sm font-medium text-muted-foreground sm:block">Design System</span>
+            <span className="hidden text-body font-bold text-muted-foreground sm:block">Guidelines</span>
           </div>
           <Eyebrow className="hidden sm:block">Service Made Simple</Eyebrow>
         </div>
@@ -90,7 +93,7 @@ export default function Page() {
               <a
                 key={n.id}
                 href={`#${n.id}`}
-                className="ds-h6 rounded-lg px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                className="rounded-lg px-3 py-2 text-body font-bold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               >
                 {n.label}
               </a>
@@ -103,10 +106,10 @@ export default function Page() {
             <div className="grid items-center gap-8 p-8 md:grid-cols-5 md:p-12">
               <div className="md:col-span-3">
                 <Eyebrow className="mb-3">Cerrowire Connect</Eyebrow>
-                <h1 className="ds-h1 text-balance text-foreground">The Cerrowire Connect Design System</h1>
+                <h1 className="ds-h1 text-balance text-foreground">Cerrowire Connect Guidelines</h1>
                 <p className="ds-body mt-4 max-w-2xl text-pretty text-muted-foreground">
-                  The visual language behind the Cerrowire Connect ordering platform — a warm, industrial palette
-                  anchored by PMS 151 orange, Pragmatica type, and clean rounded surfaces.
+                  One shared reference for design and development: brand tokens, the Figma type scale, components,
+                  and the rules that keep every Cerrowire Connect screen consistent.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   {heroFacts.map((f) => (

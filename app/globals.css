@@ -93,15 +93,15 @@
    variables, since next/font hashes the literal family names.
    ========================================================================== */
 @theme {
-  /* Pragmatica ships Book (400) and Bold (700) only. In-between names are
-     pinned so legacy classes render predictably during migration:
-     medium -> Book, semibold/extrabold/black -> Bold. Remove once migrated. */
+  /* Pragmatica weights: Book 400, Bold 700, Black 900 (Figma headings).
+     In-between names are pinned so legacy classes render predictably:
+     medium -> Book, semibold/extrabold -> Bold. */
   --font-weight-normal: 400;
   --font-weight-bold: 700;
   --font-weight-medium: 400;
   --font-weight-semibold: 700;
   --font-weight-extrabold: 700;
-  --font-weight-black: 700;
+  --font-weight-black: 900;
 
   /* Brand H1 hero, marketing */
   --text-display: 3.75rem; /* 60 */
@@ -419,69 +419,96 @@
   }
 }
 
-/* Typography scale per Cerrowire Digital Style Guide */
+/* Content type scale — source of truth: Figma CerrowireConnect-V3,
+   "2. TYPOGRAPHY" (node 213:2866). Headings use Pragmatica Black (900),
+   text uses Pragmatica Book (400). */
 @utility font-heading {
   font-family: var(--font-heading);
 }
 
 @utility ds-h1 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 3.75rem; /* 60px */
-  line-height: 1; /* 60px */
+  font-weight: 900;
+  font-size: 2.75rem; /* 44 */
+  line-height: 1; /* 44 */
   letter-spacing: -0.02em;
 }
 
 @utility ds-h2 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 2.5rem; /* 40px */
-  line-height: 3.125rem; /* 50px */
+  font-weight: 900;
+  font-size: 2rem; /* 32 */
+  line-height: 1.1; /* 35.2 */
   letter-spacing: -0.01em;
 }
 
 @utility ds-h3 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.5625rem; /* 25px */
-  line-height: 2.375rem; /* 38px */
+  font-weight: 900;
+  font-size: 1.5rem; /* 24 */
+  line-height: 1.3; /* 31.2 */
 }
 
 @utility ds-h4 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.4375rem; /* 23px */
-  line-height: 2.1875rem; /* 35px */
+  font-weight: 900;
+  font-size: 1.125rem; /* 18 */
+  line-height: 1.3; /* 23.4 */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 @utility ds-h5 {
   font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: 1.25rem; /* 20px */
-  line-height: 1.625rem; /* 26px */
+  font-weight: 900;
+  font-size: 1rem; /* 16 */
+  line-height: 1.4; /* 22.4 */
 }
 
 @utility ds-h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.9375rem; /* 15px */
-  line-height: 1.1875rem; /* 19px */
-  letter-spacing: 0.06em;
-  text-transform: capitalize;
+  font-weight: 900;
+  font-size: 0.8125rem; /* 13 */
+  line-height: 1.3; /* 16.9 */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 @utility ds-body {
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 1.125rem; /* 18px */
-  line-height: 2.25rem; /* 36px */
+  font-size: 1rem; /* 16 */
+  line-height: 1.7; /* 27.2 */
 }
 
+/* Figma colors subtitles #F0721F; that fails AA as small text on cream, so the
+   color is left to the call site (text-link for AA, text-primary on dark). */
+@utility ds-subtitle {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.8125rem; /* 13 */
+  line-height: 1.4; /* 18.2 */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Figma uses #A19893 for meta and labels (2.6:1 on cream); muted-foreground
+   keeps the same role at AA contrast. */
 @utility ds-meta {
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 0.8125rem; /* 13px */
-  line-height: 1.6875rem; /* 27px */
+  font-size: 0.75rem; /* 12 */
+  line-height: 1.6; /* 19.2 */
+  color: var(--muted-foreground);
+}
+
+@utility ds-label {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 0.6875rem; /* 11 */
+  line-height: 1.4; /* 15.4 */
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--muted-foreground);
 }
 
@@ -489,10 +516,12 @@
   font-family: var(--font-condensed);
 }
 
+/* Section title, Figma "div.section-title": 12 / Black / 0.1em / uppercase */
 @utility eyebrow {
-  font-weight: 700;
+  font-weight: 900;
   font-size: 0.75rem;
+  line-height: 1.4;
   letter-spacing: 0.1em;
-  text-transform: capitalize;
+  text-transform: uppercase;
   color: var(--muted-foreground);
 }

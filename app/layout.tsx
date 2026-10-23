@@ -4,12 +4,14 @@ import localFont from 'next/font/local'
 import './globals.css'
 
 // Primary brand font (Pragmatica), served from the licensed OTF files converted
-// to WOFF2. Book = 400 (body), Bold = 700 (headings). Helvetica Neue is the
-// brand-specified system fallback while the font swaps in (display: swap).
+// to WOFF2. Book = 400 (body), Bold = 700, Black = 900 (Figma headings).
+// Pragmatica-Black.woff2 is not in the repo yet, so 900 points at Bold until it
+// is added — replace that one path. Helvetica Neue is the brand fallback.
 const pragmatica = localFont({
   src: [
     { path: '../public/fonts/Pragmatica-Book.woff2', weight: '400', style: 'normal' },
     { path: '../public/fonts/Pragmatica-Bold.woff2', weight: '700', style: 'normal' },
+    { path: '../public/fonts/Pragmatica-Bold.woff2', weight: '900', style: 'normal' },
   ],
   variable: '--font-pragmatica',
   display: 'swap',
@@ -40,9 +42,9 @@ const bookmania = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Cerrowire Connect — Design System',
+  title: 'Cerrowire Connect — Guidelines',
   description:
-    'The design system powering Cerrowire Connect: colors, typography, components, and patterns.',
+    'Brand and product guidelines for Cerrowire Connect: tokens, typography, components, patterns, and developer reference.',
   generator: 'v0.app',
   icons: {
     icon: [
