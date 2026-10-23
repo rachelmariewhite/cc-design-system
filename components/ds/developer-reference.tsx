@@ -65,14 +65,12 @@ const snippets = [
 ]
 
 const checklist = [
-  "Colors come from tokens only — no hex values or bg-white / text-black in components.",
   "Text uses one type class (ds-* or text-*) per element.",
   "Orange (#F0721F) fills are for primary actions. Use text-link for orange text on light surfaces.",
   "Each status keeps the same tone on every screen (see Badges).",
   "Cards use rounded-xl with border-border. Buttons and pills use rounded-full.",
   "Every interactive element has a visible focus ring and an accessible name.",
   "Text meets WCAG AA: 4.5:1 for body, 3:1 for 18px+ or bold 14px+.",
-  "Check both light and dark themes before you ship.",
 ]
 
 export function DeveloperReference() {
