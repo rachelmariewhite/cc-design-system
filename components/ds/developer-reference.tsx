@@ -15,8 +15,8 @@ const tokenGroups = [
     title: "Text",
     tokens: [
       { cls: "text-foreground", use: "Primary text" },
-      { cls: "text-muted-foreground", use: "Secondary text, meta (AA)" },
-      { cls: "text-link", use: "Links, orange text on light (AA)" },
+      { cls: "text-muted-foreground", use: "Secondary text, meta" },
+      { cls: "text-link", use: "Links, orange text on light" },
       { cls: "text-primary-foreground", use: "Text on orange buttons" },
     ],
   },
@@ -70,7 +70,6 @@ const checklist = [
   "Each status keeps the same tone on every screen (see Badges).",
   "Cards use rounded-xl with border-border. Buttons and pills use rounded-full.",
   "Every interactive element has a visible focus ring and an accessible name.",
-  "Text meets WCAG AA: 4.5:1 for body, 3:1 for 18px+ or bold 14px+.",
 ]
 
 export function DeveloperReference() {
