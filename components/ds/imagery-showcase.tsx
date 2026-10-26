@@ -6,7 +6,7 @@ const parity = [
   { item: "Typeface", live: "Pragmatica TTF fails to decode; one 400 weight declared", spec: "Pragmatica Book + Black WOFF2 (/fonts)" },
   { item: "Orange", live: "#FF6900 (Tailwind orange-500)", spec: "#F0721F · bg-primary" },
   { item: "Heading color", live: "#101828 (Tailwind gray-900)", spec: "#373331 · text-foreground" },
-  { item: "Help text", live: "#99A1AF gray-400 (2.6:1, fails AA)", spec: "text-muted-foreground" },
+  { item: "Help text", live: "#99A1AF (Tailwind gray-400)", spec: "text-muted-foreground" },
   { item: "Button label", live: "18px Medium, sentence case", spec: "text-btn-lg · Bold caps" },
   { item: "Focus ring", live: "focus:ring (shows on mouse click)", spec: "focus-visible:ring-ring" },
   { item: "Submit state", live: "No loading feedback", spec: "Spinner + aria-busy" },

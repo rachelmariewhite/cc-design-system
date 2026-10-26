@@ -178,7 +178,7 @@
   --popover-foreground: #373331;
   --primary: #f0721f;
   --primary-foreground: #ffffff;
-  /* Accessible deep-orange for inline text/links on light surfaces (WCAG AA: 5.7:1 on cream). */
+  /* Deep orange for inline text and links on light surfaces. */
   --link: #9a4a12;
   --secondary: #f2ede9;
   --secondary-foreground: #373331;

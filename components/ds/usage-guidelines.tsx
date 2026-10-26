@@ -29,7 +29,7 @@ const rules: Rule[] = [
   },
   {
     title: "Pair tones correctly",
-    doText: "Use tone text on its own tint. Each pair is tuned to 4.5:1 or higher.",
+    doText: "Use tone text on its own tint. Each text and tint pair is built to go together.",
     dontText: "Don’t use the icon or brand color as text on a light tint.",
     doDemo: <Badge className="rounded-full border-transparent bg-tone-orange-tint text-tone-orange-text">Administrator</Badge>,
     dontDemo: <Badge className="rounded-full border-transparent bg-tone-orange-tint text-primary">Administrator</Badge>,

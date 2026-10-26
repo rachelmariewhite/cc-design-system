@@ -1,4 +1,5 @@
 import { CopyButton } from "@/components/ds/copy-button"
+import { FontDownloads } from "@/components/ds/font-downloads"
 import { Panel, Spec } from "@/components/ds/primitives"
 
 const tokenGroups = [
@@ -95,6 +96,8 @@ const checklist = [
 export function DeveloperReference() {
   return (
     <div className="flex flex-col gap-10">
+      <FontDownloads />
+
       <div className="grid gap-4 md:grid-cols-2">
         {tokenGroups.map((group) => (
           <Panel key={group.title} className="flex flex-col gap-3 p-5">
