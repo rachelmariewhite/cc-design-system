@@ -73,8 +73,8 @@ export function HomepageColors() {
         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
           Each tone has four steps: <span className="font-mono text-foreground">surface</span> (card fill),{" "}
           <span className="font-mono text-foreground">tint</span> (icon box and badge fill),{" "}
-          <span className="font-mono text-foreground">icon</span> (glyphs, at least 3:1 against tint), and{" "}
-          <span className="font-mono text-foreground">text</span> (labels, at least 4.5:1 against tint). Card titles and
+          <span className="font-mono text-foreground">icon</span> (glyphs), and{" "}
+          <span className="font-mono text-foreground">text</span> (labels on the tint). Card titles and
           descriptions always stay in neutral foreground colors, so the tone tells you the category without making
           text harder to read.
         </p>

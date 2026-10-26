@@ -4,7 +4,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@keyframes logo-breathe {
+  0%, 100% { transform: scale(0.86); opacity: 0.55; }
+  50% { transform: scale(1); opacity: 1; }
+}
+
 @theme inline {
+  --animate-logo-breathe: logo-breathe 1.4s ease-in-out infinite;
   --font-sans: var(--font-pragmatica), 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-heading: var(--font-pragmatica), 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-condensed: var(--font-pragmatica-condensed), 'Helvetica Neue Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -178,7 +184,7 @@
   --popover-foreground: #373331;
   --primary: #f0721f;
   --primary-foreground: #ffffff;
-  /* Accessible deep-orange for inline text/links on light surfaces (WCAG AA: 5.7:1 on cream). */
+  /* Deep orange for inline text and links on light surfaces. */
   --link: #9a4a12;
   --secondary: #f2ede9;
   --secondary-foreground: #373331;

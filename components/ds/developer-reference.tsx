@@ -1,4 +1,5 @@
 import { CopyButton } from "@/components/ds/copy-button"
+import { FontDownloads } from "@/components/ds/font-downloads"
 import { Panel, Spec } from "@/components/ds/primitives"
 
 const tokenGroups = [
@@ -62,6 +63,24 @@ const snippets = [
   Shipped
 </Badge>`,
   },
+  {
+    title: "Loading button",
+    code: `<button aria-busy={loading} disabled={loading}
+  className="inline-flex h-11 items-center gap-2 rounded-full
+    bg-primary px-6 text-btn text-primary-foreground
+    transition-colors duration-200 ease-out hover:bg-primary/90">
+  {loading && <Spinner size="sm" label="Submitting"
+    className="text-primary-foreground" />}
+  {loading ? "Submitting" : "Submit Order"}
+</button>`,
+  },
+  {
+    title: "Skeleton row",
+    code: `<div aria-busy="true" className="flex items-center gap-3">
+  <div className="h-4 w-20 rounded-md bg-muted motion-safe:animate-pulse" />
+  <div className="h-4 flex-1 rounded-md bg-muted motion-safe:animate-pulse" />
+</div>`,
+  },
 ]
 
 const checklist = [
@@ -70,11 +89,15 @@ const checklist = [
   "Each status keeps the same tone on every screen (see Badges).",
   "Cards use rounded-xl with border-border. Buttons and pills use rounded-full.",
   "Every interactive element has a visible focus ring and an accessible name.",
+  "Async actions show a Spinner and set aria-busy. Use skeletons when the layout is known.",
+  "Hover and color changes use transition-colors duration-200 ease-out. Decorative motion is motion-safe.",
 ]
 
 export function DeveloperReference() {
   return (
     <div className="flex flex-col gap-10">
+      <FontDownloads />
+
       <div className="grid gap-4 md:grid-cols-2">
         {tokenGroups.map((group) => (
           <Panel key={group.title} className="flex flex-col gap-3 p-5">
@@ -126,7 +149,10 @@ export function DeveloperReference() {
             ))}
           </ol>
         </Panel>
-        <Spec>Source of truth: Figma CerrowireConnect-V3 · tokens live in app/globals.css</Spec>
+        <Spec>
+          Source of truth: Figma CerrowireConnect-V3 for type and layout · app/globals.css for tokens · components/ds/spinner.tsx
+          for loaders. Where cdeweb.cerrowire.com differs, these Guidelines win (see In Product).
+        </Spec>
       </div>
     </div>
   )
