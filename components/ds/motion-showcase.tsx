@@ -24,8 +24,8 @@ const sizes = [
 
 const variants = [
   { variant: "ring", name: "Ring", use: "Default for all loading", code: '<Spinner />' },
-  { variant: "rays", name: "Rays", use: "Dense toolbars and filters", code: '<Spinner variant="rays" />' },
-  { variant: "dots", name: "Dots", use: "Assistant replies and typing", code: '<Spinner variant="dots" />' },
+  { variant: "logo-pulse", name: "Logo pulse", use: "Sign-in, first load, and splash screens", code: '<Spinner variant="logo-pulse" />' },
+  { variant: "logo-orbit", name: "Logo orbit", use: "Full-page and long waits (over 2s)", code: '<Spinner variant="logo-orbit" />' },
 ] as const
 
 const colorways = [
@@ -118,6 +118,8 @@ function SpinnerGallery() {
         <li className="rounded-lg bg-muted/50 px-4 py-3"><span className="font-bold">Do</span> keep the button width fixed while it loads so the layout doesn&apos;t shift.</li>
         <li className="rounded-lg bg-muted/50 px-4 py-3"><span className="font-bold">Don&apos;t</span> show more than one spinner per panel. Use one for the whole region.</li>
         <li className="rounded-lg bg-muted/50 px-4 py-3"><span className="font-bold">Don&apos;t</span> show a spinner for loads under 300ms. Wait 300ms before showing it to avoid a flash.</li>
+        <li className="rounded-lg bg-muted/50 px-4 py-3"><span className="font-bold">Do</span> save logo spinners for branded moments like sign-in and full-page loads. Use the ring everywhere else.</li>
+        <li className="rounded-lg bg-muted/50 px-4 py-3"><span className="font-bold">Don&apos;t</span> put logo spinners on orange or charcoal. The mark keeps its own colors, so it needs a light surface.</li>
       </ul>
     </Panel>
   )

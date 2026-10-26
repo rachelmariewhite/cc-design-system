@@ -1,4 +1,5 @@
-import { Loader, Loader2 } from "lucide-react"
+import Image from "next/image"
+import { Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const sizes = {
@@ -8,21 +9,25 @@ const sizes = {
   lg: "size-8",
 } as const
 
-const dotSizes = {
-  xs: "size-1",
-  sm: "size-1.5",
-  md: "size-2",
-  lg: "size-3",
+// The mark is wider than tall, so logo spinners need a larger box than the ring to stay legible.
+const logoSizes = {
+  xs: "size-5",
+  sm: "size-6",
+  md: "size-8",
+  lg: "size-12",
 } as const
 
 export type SpinnerSize = keyof typeof sizes
-export type SpinnerVariant = "ring" | "rays" | "dots"
+export type SpinnerVariant = "ring" | "logo-pulse" | "logo-orbit"
+
+const MARK_SRC = "/images/cerrowire-connect-mark.png"
 
 /**
- * Brand loader. `ring` (Lucide Loader2) is the default used across the Connect app;
- * `rays` suits dense toolbars and `dots` suits chat/typing or AI responses.
- * Reduced-motion users get a slower spin (or a pulse for dots) rather than none,
- * so progress stays visible.
+ * Brand loader. `ring` (Lucide Loader2) is the default across the Connect app.
+ * `logo-pulse` and `logo-orbit` use the Cerrowire Connect mark for branded moments
+ * such as sign-in, first load, and full-page waits. The mark keeps its own brand
+ * colors, so use logo variants on light surfaces only. Reduced-motion users get a
+ * slower animation rather than none, so progress stays visible.
  */
 export function Spinner({
   size = "sm",
@@ -37,21 +42,23 @@ export function Spinner({
 }) {
   return (
     <span role="status" className={cn("inline-flex items-center text-primary", className)}>
-      {variant === "dots" ? (
-        <span aria-hidden="true" className="inline-flex items-center gap-1">
-          {[0, 150, 300].map((delay) => (
-            <span
-              key={delay}
-              style={{ animationDelay: `${delay}ms` }}
-              className={cn(dotSizes[size], "rounded-full bg-current motion-safe:animate-bounce motion-reduce:animate-pulse")}
-            />
-          ))}
-        </span>
-      ) : variant === "rays" ? (
-        <Loader
+      {variant === "logo-pulse" ? (
+        <Image
+          src={MARK_SRC}
+          alt=""
           aria-hidden="true"
-          className={cn(sizes[size], "animate-spin motion-reduce:animate-[spin_1.6s_linear_infinite]")}
+          width={192}
+          height={192}
+          className={cn(
+            logoSizes[size],
+            "object-contain motion-safe:animate-logo-breathe motion-reduce:animate-[logo-breathe_2.8s_ease-in-out_infinite]",
+          )}
         />
+      ) : variant === "logo-orbit" ? (
+        <span aria-hidden="true" className={cn("relative inline-flex items-center justify-center", logoSizes[size])}>
+          <span className="absolute inset-0 animate-spin rounded-full border-2 border-current/20 border-t-current motion-reduce:animate-[spin_1.6s_linear_infinite]" />
+          <Image src={MARK_SRC} alt="" width={192} height={192} className="size-[68%] object-contain" />
+        </span>
       ) : (
         <Loader2
           aria-hidden="true"
