@@ -22,6 +22,107 @@ const sizes = [
   { size: "lg", label: "32px", use: "Panel loads" },
 ] as const
 
+const variants = [
+  { variant: "ring", name: "Ring", use: "Default for all loading", code: '<Spinner />' },
+  { variant: "rays", name: "Rays", use: "Dense toolbars and filters", code: '<Spinner variant="rays" />' },
+  { variant: "dots", name: "Dots", use: "Assistant replies and typing", code: '<Spinner variant="dots" />' },
+] as const
+
+const colorways = [
+  { name: "Primary", surface: "bg-card border border-border", spinner: "text-primary", text: "text-foreground", note: "text-primary · default" },
+  { name: "Neutral", surface: "bg-card border border-border", spinner: "text-muted-foreground", text: "text-foreground", note: "text-muted-foreground · secondary areas" },
+  { name: "On orange", surface: "bg-primary", spinner: "text-primary-foreground", text: "text-primary-foreground", note: "text-primary-foreground · inside primary buttons" },
+  { name: "On charcoal", surface: "bg-sidebar", spinner: "text-sidebar-primary", text: "text-sidebar-foreground", note: "text-sidebar-primary · sidebar and dark panels" },
+]
+
+function SpinnerGallery() {
+  return (
+    <Panel className="flex flex-col gap-6 p-6">
+      <LabeledBlock label="Spinner types">
+        <div className="grid gap-3 sm:grid-cols-3">
+          {variants.map((v) => (
+            <div key={v.variant} className="flex flex-col gap-3 rounded-lg bg-muted/50 p-4">
+              <div className="flex h-10 items-center gap-4">
+                {sizes.map((s) => (
+                  <Spinner key={s.size} variant={v.variant} size={s.size} label={`${v.name} ${s.label}`} />
+                ))}
+              </div>
+              <div className="flex flex-col gap-1">
+                <p className="text-body font-bold text-foreground">{v.name}</p>
+                <p className="text-caption text-muted-foreground">{v.use}</p>
+              </div>
+              <code className="font-mono text-caption text-link">{v.code}</code>
+            </div>
+          ))}
+        </div>
+      </LabeledBlock>
+
+      <LabeledBlock label="Color variations">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {colorways.map((c) => (
+            <div key={c.name} className="flex flex-col gap-2">
+              <div className={cn("flex h-14 items-center gap-3 rounded-lg px-4", c.surface)}>
+                <Spinner size="md" className={c.spinner} label={`Loading on ${c.name}`} />
+                <span className={cn("text-body font-bold", c.text)}>{c.name}</span>
+              </div>
+              <code className="font-mono text-caption text-muted-foreground">{c.note}</code>
+            </div>
+          ))}
+        </div>
+      </LabeledBlock>
+
+      <LabeledBlock label="Placements">
+        <div className="grid gap-3 lg:grid-cols-3">
+          <div className="flex flex-col gap-2">
+            <div className="overflow-hidden rounded-lg border border-border">
+              <div className="grid grid-cols-[1fr_auto] items-center gap-3 border-b border-border bg-muted/50 px-4 py-2 text-caption font-bold uppercase tracking-wide text-muted-foreground">
+                <span>Order</span>
+                <span>Status</span>
+              </div>
+              <div className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-3">
+                <span className="text-body text-foreground">PO-48213</span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-2.5 py-1 text-caption font-bold text-muted-foreground">
+                  <Spinner size="xs" className="text-muted-foreground" label="Checking status" />
+                  Checking
+                </span>
+              </div>
+            </div>
+            <p className="text-caption text-muted-foreground">Table row: xs inside a status pill</p>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <div className="relative overflow-hidden rounded-lg border border-border">
+              <div aria-hidden="true" className="flex flex-col gap-2 p-4 opacity-40">
+                <p className="text-caption font-bold uppercase tracking-wide text-muted-foreground">Open Orders</p>
+                <p className="font-serif text-3xl font-bold text-foreground">24</p>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-card/60">
+                <Spinner size="md" label="Refreshing open orders" />
+              </div>
+            </div>
+            <p className="text-caption text-muted-foreground">Card refresh: md over dimmed content</p>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <div className="flex h-full min-h-28 flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-border p-4">
+              <Spinner size="lg" label="Loading quotes" />
+              <p className="text-body text-muted-foreground">Loading quotes…</p>
+            </div>
+            <p className="text-caption text-muted-foreground">Panel load: lg centered with a label</p>
+          </div>
+        </div>
+      </LabeledBlock>
+
+      <ul className="grid gap-2 text-body text-foreground sm:grid-cols-2">
+        <li className="rounded-lg bg-muted/50 px-4 py-3"><span className="font-bold">Do</span> give every spinner a <code className="font-mono text-caption text-link">label</code> so screen readers hear what is loading.</li>
+        <li className="rounded-lg bg-muted/50 px-4 py-3"><span className="font-bold">Do</span> keep the button width fixed while it loads so the layout doesn&apos;t shift.</li>
+        <li className="rounded-lg bg-muted/50 px-4 py-3"><span className="font-bold">Don&apos;t</span> show more than one spinner per panel. Use one for the whole region.</li>
+        <li className="rounded-lg bg-muted/50 px-4 py-3"><span className="font-bold">Don&apos;t</span> show a spinner for loads under 300ms. Wait 300ms before showing it to avoid a flash.</li>
+      </ul>
+    </Panel>
+  )
+}
+
 type SaveState = "idle" | "loading" | "done"
 
 function useTimedState() {
@@ -122,6 +223,7 @@ function InteractionStates() {
 export function MotionShowcase() {
   return (
     <div className="flex flex-col gap-4">
+      <SpinnerGallery />
       <div className="grid gap-4 lg:grid-cols-2">
         <Panel className="flex flex-col gap-5 p-6">
           <LabeledBlock label="Spinner sizes">
