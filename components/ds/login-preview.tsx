@@ -29,11 +29,11 @@ export function LoginPreview() {
           onClick={signIn}
           aria-busy={loading}
           disabled={loading}
-          className="inline-flex h-13 w-full items-center justify-center gap-2 rounded-full bg-primary text-btn-lg text-primary-foreground transition-colors duration-200 ease-out hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card active:scale-[0.98] disabled:cursor-wait"
+          className="inline-flex h-13 w-full items-center justify-center gap-2 rounded-full bg-action text-btn-lg text-action-foreground transition-colors duration-200 ease-out hover:bg-action-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card active:scale-[0.98] disabled:cursor-wait"
         >
           {loading ? (
             <>
-              <Spinner size="sm" label="Signing in" className="text-primary-foreground" />
+              <Spinner size="sm" label="Signing in" className="text-action-foreground" />
               Signing In
             </>
           ) : (

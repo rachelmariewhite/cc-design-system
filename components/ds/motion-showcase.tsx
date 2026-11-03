@@ -31,7 +31,7 @@ const variants = [
 const colorways = [
   { name: "Primary", surface: "bg-card border border-border", spinner: "text-primary", text: "text-foreground", note: "text-primary · default" },
   { name: "Neutral", surface: "bg-card border border-border", spinner: "text-muted-foreground", text: "text-foreground", note: "text-muted-foreground · secondary areas" },
-  { name: "On orange", surface: "bg-primary", spinner: "text-primary-foreground", text: "text-primary-foreground", note: "text-primary-foreground · inside primary buttons" },
+  { name: "On orange", surface: "bg-action", spinner: "text-action-foreground", text: "text-action-foreground", note: "text-action-foreground · inside primary buttons" },
   { name: "On charcoal", surface: "bg-sidebar", spinner: "text-sidebar-primary", text: "text-sidebar-foreground", note: "text-sidebar-primary · sidebar and dark panels" },
 ]
 
@@ -153,11 +153,11 @@ function LoadingButtons() {
         onClick={runSubmit}
         aria-busy={submit === "loading"}
         disabled={submit === "loading"}
-        className="inline-flex h-11 min-w-44 items-center justify-center gap-2 rounded-full bg-primary px-6 text-btn text-primary-foreground transition-colors duration-200 ease-out hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] disabled:cursor-wait"
+        className="inline-flex h-11 min-w-44 items-center justify-center gap-2 rounded-full bg-action px-6 text-btn text-action-foreground transition-colors duration-200 ease-out hover:bg-action-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] disabled:cursor-wait"
       >
         {submit === "loading" ? (
           <>
-            <Spinner size="sm" label="Submitting order" className="text-primary-foreground" />
+            <Spinner size="sm" label="Submitting order" className="text-action-foreground" />
             Submitting
           </>
         ) : submit === "done" ? (
@@ -197,11 +197,11 @@ function SkeletonBlock({ className }: { className?: string }) {
 
 function InteractionStates() {
   const states = [
-    { label: "Default", cls: "bg-primary" },
+    { label: "Default", cls: "bg-action" },
     { label: "Hover", cls: "bg-primary/90" },
-    { label: "Focus", cls: "bg-primary ring-2 ring-ring ring-offset-2 ring-offset-card" },
-    { label: "Pressed", cls: "bg-primary scale-[0.98]" },
-    { label: "Disabled", cls: "bg-primary opacity-50" },
+    { label: "Focus", cls: "bg-action ring-2 ring-ring ring-offset-2 ring-offset-card" },
+    { label: "Pressed", cls: "bg-action scale-[0.98]" },
+    { label: "Disabled", cls: "bg-action opacity-50" },
   ]
   return (
     <div className="flex flex-wrap gap-4">
@@ -209,7 +209,7 @@ function InteractionStates() {
         <div key={s.label} className="flex flex-col items-center gap-2">
           <span
             className={cn(
-              "inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full px-4 text-btn-sm text-primary-foreground",
+              "inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full px-4 text-btn-sm text-action-foreground",
               s.cls,
             )}
           >
@@ -303,7 +303,7 @@ export function MotionShowcase() {
           <LabeledBlock label="Interaction states">
             <InteractionStates />
           </LabeledBlock>
-          <Spec>hover:bg-primary/90 · focus-visible:ring-2 ring-ring · active:scale-[0.98] · disabled:opacity-50</Spec>
+          <Spec>hover:bg-action-hover · focus-visible:ring-2 ring-ring · active:scale-[0.98] · disabled:opacity-50</Spec>
         </Panel>
       </div>
 

@@ -1,108 +1,95 @@
-"use client"
+import { getColorTokens, type ColorToken } from "@/lib/design-tokens"
+import { Eyebrow, Spec } from "@/components/ds/primitives"
+import { SwatchCard } from "@/components/ds/swatch-card"
 
-import { useState } from "react"
-import { Check, Copy } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Eyebrow } from "@/components/ds/primitives"
-
-interface Swatch {
-  name: string
-  token: string
-  value: string
-  text?: string
-  border?: boolean
+const figmaNames: Record<string, string> = {
+  primary: "PMS 151 Orange",
+  "brand-black": "Black",
+  "brand-cream": "Cream",
+  "brand-sand": "Sand",
+  "brand-stone": "Stone",
+  "brand-taupe": "Taupe",
+  "brand-charcoal": "Charcoal",
 }
 
-const brandColors: Swatch[] = [
-  { name: "PMS 151 Orange", token: "bg-primary", value: "#F0721F", text: "text-primary-foreground" },
-  { name: "Black", token: "bg-brand-black", value: "#000000", text: "text-background" },
-  { name: "White", token: "bg-card", value: "#FFFFFF", text: "text-card-foreground", border: true },
+const groups: { label: string; note?: string; match: (n: string) => boolean }[] = [
+  { label: "Figma brand palette", match: (n) => n === "primary" || n.startsWith("brand-") },
+  {
+    label: "Action & links",
+    note: "Buttons use --action, not brand orange, so white button text passes AA.",
+    match: (n) => n.startsWith("action") || n === "link",
+  },
+  { label: "Status", match: (n) => n.startsWith("status-") },
+  { label: "Tones", note: "Quick-link cards and icon chips.", match: (n) => n.startsWith("tone-") },
+  { label: "Sidebar", match: (n) => n.startsWith("sidebar") },
+  { label: "Charts", match: (n) => n.startsWith("chart-") },
+  { label: "Semantic surfaces & text", match: () => true },
 ]
 
-const digitalPalette: Swatch[] = [
-  { name: "Cream", token: "bg-brand-cream", value: "#F7F4F1", text: "text-foreground", border: true },
-  { name: "Sand", token: "bg-brand-sand", value: "#F2EDE9", text: "text-foreground", border: true },
-  { name: "Stone", token: "bg-brand-stone", value: "#D9D2CD", text: "text-foreground" },
-  { name: "Taupe", token: "bg-brand-taupe", value: "#A19893", text: "text-background" },
-  { name: "Charcoal", token: "bg-brand-charcoal", value: "#373331", text: "text-background" },
-]
+const toLabel = (name: string) =>
+  figmaNames[name] ?? name.replace(/-/g, " ").replace(/^\w/, (c) => c.toUpperCase())
 
-const semanticColors: Swatch[] = [
-  { name: "Primary", token: "bg-primary", value: "#F0721F", text: "text-primary-foreground" },
-  { name: "Background", token: "bg-background", value: "#F7F4F1", text: "text-foreground", border: true },
-  { name: "Foreground", token: "bg-foreground", value: "#373331", text: "text-background" },
-  { name: "Card", token: "bg-card", value: "#FFFFFF", text: "text-card-foreground", border: true },
-  { name: "Secondary", token: "bg-secondary", value: "#F2EDE9", text: "text-secondary-foreground", border: true },
-  { name: "Muted", token: "bg-muted", value: "#F2EDE9", text: "text-muted-foreground", border: true },
-  { name: "Muted Fg", token: "bg-brand-taupe", value: "#A19893", text: "text-background" },
-  { name: "Border", token: "bg-border", value: "#D9D2CD", text: "text-foreground" },
-]
-
-const statusColors: Swatch[] = [
-  { name: "Success", token: "bg-success", value: "#2D8C5A", text: "text-success-foreground" },
-  { name: "Warning", token: "bg-warning", value: "#F0721F", text: "text-warning-foreground" },
-  { name: "Destructive", token: "bg-destructive", value: "#DC2626", text: "text-destructive-foreground" },
-]
-
-const sidebarColors: Swatch[] = [
-  { name: "Sidebar", token: "bg-sidebar", value: "#373331", text: "text-sidebar-foreground" },
-  { name: "Sidebar Accent", token: "bg-sidebar-accent", value: "#4A4543", text: "text-sidebar-accent-foreground" },
-  { name: "Sidebar Primary", token: "bg-sidebar-primary", value: "#F0721F", text: "text-sidebar-primary-foreground" },
-]
-
-function SwatchCard({ swatch }: { swatch: Swatch }) {
-  const [copied, setCopied] = useState(false)
-  return (
-    <button
-      type="button"
-      onClick={() => {
-        navigator.clipboard?.writeText(swatch.value)
-        setCopied(true)
-        setTimeout(() => setCopied(false), 1200)
-      }}
-      className="group overflow-hidden rounded-xl border border-border bg-card text-left transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
-    >
-      <div
-        className={cn(
-          "flex h-24 items-start justify-end p-3",
-          swatch.token,
-          swatch.text,
-          swatch.border && "border-b border-border",
-        )}
-      >
-        <span className="rounded-full bg-black/10 p-1.5 opacity-0 transition-opacity group-hover:opacity-100">
-          {copied ? <Check className="size-3.5" aria-hidden="true" /> : <Copy className="size-3.5" aria-hidden="true" />}
-        </span>
-      </div>
-      <div className="flex items-center justify-between gap-2 p-3">
-        <p className="text-sm font-semibold text-foreground">{swatch.name}</p>
-        <p className="font-mono text-xs text-muted-foreground">{copied ? "Copied" : swatch.value}</p>
-      </div>
-    </button>
-  )
+function grouped(tokens: ColorToken[]) {
+  const buckets = groups.map((g) => ({ ...g, tokens: [] as ColorToken[] }))
+  for (const t of tokens) buckets.find((b) => b.match(t.name))!.tokens.push(t)
+  const semantic = buckets.pop()!
+  return [buckets[0], buckets[1], semantic, ...buckets.slice(2)].filter((b) => b.tokens.length)
 }
 
-function Group({ label, swatches }: { label: string; swatches: Swatch[] }) {
+function StatusRow({ tokens }: { tokens: ColorToken[] }) {
+  const meanings = [...new Set(tokens.map((t) => t.name.replace(/^status-|-(bg|border|text)$/g, "")))]
   return (
-    <div>
-      <Eyebrow className="mb-3">{label}</Eyebrow>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {swatches.map((s) => (
-          <SwatchCard key={s.name} swatch={s} />
-        ))}
-      </div>
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      {meanings.map((m) => {
+        const hex = (part: string) => tokens.find((t) => t.name === `status-${m}-${part}`)?.light
+        return (
+          <div key={m} className="flex flex-col gap-2 rounded-xl border border-border bg-card p-3">
+            <span
+              className="w-fit rounded border px-2 py-0.5 text-xs font-medium capitalize"
+              style={{
+                backgroundColor: `var(--status-${m}-bg)`,
+                borderColor: `var(--status-${m}-border)`,
+                color: `var(--status-${m}-text)`,
+              }}
+            >
+              {m}
+            </span>
+            <span className="font-mono text-xs text-muted-foreground">--status-{m}-*</span>
+            <span className="font-mono text-xs text-muted-foreground">
+              {hex("bg")} / {hex("border")} / {hex("text")}
+            </span>
+          </div>
+        )
+      })}
     </div>
   )
 }
 
 export function ColorPalette() {
+  const tokens = getColorTokens()
   return (
-    <div className="space-y-8">
-      <Group label="Cerrowire Brand Colors" swatches={brandColors} />
-      <Group label="Expanded Digital Palette" swatches={digitalPalette} />
-      <Group label="Semantic Tokens" swatches={semanticColors} />
-      <Group label="Status" swatches={statusColors} />
-      <Group label="Sidebar (dark surface)" swatches={sidebarColors} />
+    <div className="flex flex-col gap-8">
+      {grouped(tokens).map((g) => (
+        <div key={g.label} className="flex flex-col gap-3">
+          <div className="flex flex-col gap-1">
+            <Eyebrow>{g.label}</Eyebrow>
+            {g.note && <p className="text-sm text-muted-foreground">{g.note}</p>}
+          </div>
+          {g.label === "Status" ? (
+            <StatusRow tokens={g.tokens} />
+          ) : (
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              {g.tokens.map((t) => (
+                <SwatchCard key={t.name} name={t.name} label={toLabel(t.name)} light={t.light} dark={t.dark} />
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+      <Spec>
+        Generated at build time from app/globals.css ({tokens.length} color tokens). Swatches render the live CSS
+        variable, so the docs can&apos;t drift from the code. Click a swatch to copy its var().
+      </Spec>
     </div>
   )
 }

@@ -40,7 +40,7 @@ export function FontDownloads() {
         <a
           href="/fonts/Cerrowire-Fonts.zip"
           download="Cerrowire-Fonts.zip"
-          className="inline-flex h-10 items-center gap-2 rounded-full bg-primary px-5 text-btn-sm text-primary-foreground transition-colors duration-200 ease-out hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="inline-flex h-10 items-center gap-2 rounded-full bg-action px-5 text-btn-sm text-action-foreground transition-colors duration-200 ease-out hover:bg-action-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <Download className="size-4" aria-hidden="true" />
           Download all (.zip)

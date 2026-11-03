@@ -18,13 +18,14 @@ const tokenGroups = [
       { cls: "text-foreground", use: "Primary text" },
       { cls: "text-muted-foreground", use: "Secondary text, meta" },
       { cls: "text-link", use: "Links, orange text on light" },
-      { cls: "text-primary-foreground", use: "Text on orange buttons" },
+      { cls: "text-action-foreground", use: "Text on primary buttons" },
     ],
   },
   {
     title: "Brand & action",
     tokens: [
-      { cls: "bg-primary", use: "Primary buttons only — #F0721F" },
+      { cls: "bg-action hover:bg-action-hover", use: "Primary button fill, #B9500F (4.98:1 with white)" },
+      { cls: "bg-primary", use: "Brand orange #F0721F: logo, active nav, rings. Never behind text" },
       { cls: "border-border", use: "All dividers and outlines" },
       { cls: "ring-ring", use: "Focus rings" },
       { cls: "bg-destructive", use: "Destructive actions" },
@@ -33,10 +34,14 @@ const tokenGroups = [
   {
     title: "Status tones",
     tokens: [
-      { cls: "bg-tone-green-tint text-tone-green-text", use: "Success · Shipped · Approved" },
-      { cls: "bg-tone-amber-tint text-tone-amber-text", use: "Pending · Awaiting" },
-      { cls: "bg-tone-red-tint text-tone-red-text", use: "Error · Cancelled · Overdue" },
-      { cls: "bg-tone-blue-tint text-tone-blue-text", use: "Info · Processing" },
+      { cls: "status-draft", use: "Created, not yet acted on" },
+      { cls: "status-submitted", use: "Waiting on Cerrowire or the carrier" },
+      { cls: "status-progress", use: "Being worked on" },
+      { cls: "status-transit", use: "Moving to the customer" },
+      { cls: "status-action", use: "Customer needs to act" },
+      { cls: "status-complete", use: "Done, successfully" },
+      { cls: "status-problem", use: "Blocked or lapsed" },
+      { cls: "status-closed", use: "Cancelled or voided" },
     ],
   },
 ]
@@ -59,18 +64,18 @@ const snippets = [
   },
   {
     title: "Status badge",
-    code: `<Badge className="bg-tone-green-tint text-tone-green-text">
-  Shipped
-</Badge>`,
+    code: `<StatusBadge label="Shipped" meaning="transit" />
+// bg-status-transit-bg border-status-transit-border
+// text-status-transit-text`,
   },
   {
     title: "Loading button",
     code: `<button aria-busy={loading} disabled={loading}
   className="inline-flex h-11 items-center gap-2 rounded-full
-    bg-primary px-6 text-btn text-primary-foreground
-    transition-colors duration-200 ease-out hover:bg-primary/90">
+    bg-action px-6 text-btn text-action-foreground
+    transition-colors duration-200 ease-out hover:bg-action-hover">
   {loading && <Spinner size="sm" label="Submitting"
-    className="text-primary-foreground" />}
+    className="text-action-foreground" />}
   {loading ? "Submitting" : "Submit Order"}
 </button>`,
   },
@@ -85,8 +90,8 @@ const snippets = [
 
 const checklist = [
   "Text uses one type class (ds-* or text-*) per element.",
-  "Orange (#F0721F) fills are for primary actions. Use text-link for orange text on light surfaces.",
-  "Each status keeps the same tone on every screen (see Badges).",
+  "Primary buttons use bg-action with text-action-foreground. Never put text on brand #F0721F; use text-link for orange text on light surfaces.",
+  "Status badges pick a meaning (draft, submitted, progress, transit, action, complete, problem, closed), never a color.",
   "Cards use rounded-xl with border-border. Buttons and pills use rounded-full.",
   "Every interactive element has a visible focus ring and an accessible name.",
   "Async actions show a Spinner and set aria-busy. Use skeletons when the layout is known.",

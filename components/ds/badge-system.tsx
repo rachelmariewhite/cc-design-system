@@ -3,20 +3,39 @@ import { Badge } from "@/components/ui/badge"
 import { Panel } from "@/components/ds/primitives"
 import { cn } from "@/lib/utils"
 
-type StatusTone = "blue" | "green" | "orange" | "red" | "yellow" | "purple" | "slate" | "plain"
+export type StatusMeaning =
+  | "draft"
+  | "submitted"
+  | "progress"
+  | "transit"
+  | "action"
+  | "complete"
+  | "problem"
+  | "closed"
 
-const statusToneClasses: Record<StatusTone, string> = {
-  blue: "bg-status-blue-bg border-status-blue-border text-status-blue-text",
-  green: "bg-status-green-bg border-status-green-border text-status-green-text",
-  orange: "bg-status-orange-bg border-status-orange-border text-status-orange-text",
-  red: "bg-status-red-bg border-status-red-border text-status-red-text",
-  yellow: "bg-status-yellow-bg border-status-yellow-border text-status-yellow-text",
-  purple: "bg-status-purple-bg border-status-purple-border text-status-purple-text",
-  slate: "bg-status-slate-bg border-status-slate-border text-status-slate-text",
-  plain: "bg-status-plain-bg border-status-plain-border text-status-plain-text",
+const statusMeaningClasses: Record<StatusMeaning, string> = {
+  draft: "bg-status-draft-bg border-status-draft-border text-status-draft-text",
+  submitted: "bg-status-submitted-bg border-status-submitted-border text-status-submitted-text",
+  progress: "bg-status-progress-bg border-status-progress-border text-status-progress-text",
+  transit: "bg-status-transit-bg border-status-transit-border text-status-transit-text",
+  action: "bg-status-action-bg border-status-action-border text-status-action-text",
+  complete: "bg-status-complete-bg border-status-complete-border text-status-complete-text",
+  problem: "bg-status-problem-bg border-status-problem-border text-status-problem-text",
+  closed: "bg-status-closed-bg border-status-closed-border text-status-closed-text",
 }
 
-type StatusRow = { label: string; tone: StatusTone; meaning: string }
+const meaningLegend: { meaning: StatusMeaning; label: string; rule: string }[] = [
+  { meaning: "draft", label: "Draft", rule: "Created, not yet acted on" },
+  { meaning: "submitted", label: "Submitted", rule: "Waiting on Cerrowire or the carrier" },
+  { meaning: "progress", label: "In progress", rule: "Being worked on" },
+  { meaning: "transit", label: "In transit", rule: "Moving to the customer" },
+  { meaning: "action", label: "Needs action", rule: "Customer or rep must act" },
+  { meaning: "complete", label: "Complete", rule: "Done, successfully" },
+  { meaning: "problem", label: "Problem", rule: "Blocked or lapsed" },
+  { meaning: "closed", label: "Closed", rule: "Cancelled or voided" },
+]
+
+type StatusRow = { label: string; tone: StatusMeaning; meaning: string }
 type StatusGroup = { id: string; title: string; description: string; rows: StatusRow[] }
 
 const statusGroups: StatusGroup[] = [
@@ -25,12 +44,12 @@ const statusGroups: StatusGroup[] = [
     title: "Quote Statuses",
     description: "The lifecycle stages a quote can move through.",
     rows: [
-      { label: "Requested", tone: "blue", meaning: "A quote request has been submitted by the customer or rep and is awaiting pricing." },
-      { label: "Issued", tone: "green", meaning: "Pricing has been finalized and the quote has been issued to the customer for review." },
-      { label: "Unsecured", tone: "orange", meaning: "The quote is still in progress and editable — pricing has not been locked or issued yet." },
-      { label: "Cancelled", tone: "plain", meaning: "The quote was withdrawn or voided by the customer or rep and is no longer active." },
-      { label: "Expired", tone: "red", meaning: "The quote’s validity window has passed. Pricing is no longer honored and the quote must be renewed." },
-      { label: "Unqualified", tone: "orange", meaning: "The account does not currently meet credit or qualification requirements. The quote is on hold pending review." },
+      { label: "Requested", tone: "submitted", meaning: "A quote request has been submitted by the customer or rep and is awaiting pricing." },
+      { label: "Issued", tone: "complete", meaning: "Pricing has been finalized and the quote has been issued to the customer for review." },
+      { label: "Unsecured", tone: "draft", meaning: "The quote is still in progress and editable — pricing has not been locked or issued yet." },
+      { label: "Cancelled", tone: "closed", meaning: "The quote was withdrawn or voided by the customer or rep and is no longer active." },
+      { label: "Expired", tone: "problem", meaning: "The quote’s validity window has passed. Pricing is no longer honored and the quote must be renewed." },
+      { label: "Unqualified", tone: "action", meaning: "The account does not currently meet credit or qualification requirements. The quote is on hold pending review." },
     ],
   },
   {
@@ -38,10 +57,10 @@ const statusGroups: StatusGroup[] = [
     title: "Order Statuses",
     description: "The fulfillment stages a submitted order moves through.",
     rows: [
-      { label: "Submitted", tone: "blue", meaning: "The order has been placed and is awaiting warehouse processing." },
-      { label: "Picked", tone: "yellow", meaning: "Items have been pulled and staged at the warehouse, ready for shipment." },
-      { label: "Shipped", tone: "purple", meaning: "The order has left the warehouse and is in transit to the customer." },
-      { label: "Delivered", tone: "green", meaning: "The order has been received by the customer and proof of delivery is on file." },
+      { label: "Submitted", tone: "submitted", meaning: "The order has been placed and is awaiting warehouse processing." },
+      { label: "Picked", tone: "progress", meaning: "Items have been pulled and staged at the warehouse, ready for shipment." },
+      { label: "Shipped", tone: "transit", meaning: "The order has left the warehouse and is in transit to the customer." },
+      { label: "Delivered", tone: "complete", meaning: "The order has been received by the customer and proof of delivery is on file." },
     ],
   },
   {
@@ -49,13 +68,13 @@ const statusGroups: StatusGroup[] = [
     title: "Tracking Statuses",
     description: "Carrier tracking states for shipments on the Order Tracking page.",
     rows: [
-      { label: "Ordered", tone: "slate", meaning: "Shipment has been created within Echo’s system and pending booking of a carrier." },
-      { label: "Booked", tone: "blue", meaning: "Carrier has been sourced on the shipment." },
-      { label: "Checked In", tone: "purple", meaning: "Carrier has confirmed they are set for the pickup of the shipment." },
-      { label: "Loading", tone: "yellow", meaning: "Shipment is being loaded into the carrier’s trailer." },
-      { label: "Picked Up", tone: "orange", meaning: "Shipment has been picked up by carrier and is enroute to the delivery location." },
-      { label: "Delivered", tone: "green", meaning: "Shipment has been delivered to the destination." },
-      { label: "Cancelled", tone: "red", meaning: "The shipment has been cancelled with Echo and will not be moved by Echo." },
+      { label: "Ordered", tone: "draft", meaning: "Shipment has been created within Echo’s system and pending booking of a carrier." },
+      { label: "Booked", tone: "submitted", meaning: "Carrier has been sourced on the shipment." },
+      { label: "Checked In", tone: "progress", meaning: "Carrier has confirmed they are set for the pickup of the shipment." },
+      { label: "Loading", tone: "progress", meaning: "Shipment is being loaded into the carrier’s trailer." },
+      { label: "Picked Up", tone: "transit", meaning: "Shipment has been picked up by carrier and is enroute to the delivery location." },
+      { label: "Delivered", tone: "complete", meaning: "Shipment has been delivered to the destination." },
+      { label: "Cancelled", tone: "closed", meaning: "The shipment has been cancelled with Echo and will not be moved by Echo." },
     ],
   },
   {
@@ -63,12 +82,12 @@ const statusGroups: StatusGroup[] = [
     title: "RMA / CMA Statuses",
     description: "The lifecycle of a return (RMA) or credit memo (CMA) request.",
     rows: [
-      { label: "New", tone: "slate", meaning: "The return or credit request has been created and has not yet been reviewed." },
-      { label: "Reviewing", tone: "yellow", meaning: "The request is under review by the sales rep or credit team." },
-      { label: "Approved", tone: "blue", meaning: "The request has been approved and is waiting for the RMA or CMA document to be issued." },
-      { label: "Issued", tone: "orange", meaning: "The RMA/CMA has been issued to the customer. For returns, material can now be shipped back." },
-      { label: "Credit Issued", tone: "green", meaning: "Returned material has been received (or the CMA processed) and the credit has been applied to the account." },
-      { label: "Cancelled", tone: "plain", meaning: "The request was withdrawn or voided and no credit will be issued." },
+      { label: "New", tone: "draft", meaning: "The return or credit request has been created and has not yet been reviewed." },
+      { label: "Reviewing", tone: "progress", meaning: "The request is under review by the sales rep or credit team." },
+      { label: "Approved", tone: "submitted", meaning: "The request has been approved and is waiting for the RMA or CMA document to be issued." },
+      { label: "Issued", tone: "action", meaning: "The RMA/CMA has been issued to the customer. For returns, material can now be shipped back." },
+      { label: "Credit Issued", tone: "complete", meaning: "Returned material has been received (or the CMA processed) and the credit has been applied to the account." },
+      { label: "Cancelled", tone: "closed", meaning: "The request was withdrawn or voided and no credit will be issued." },
     ],
   },
 ]
@@ -78,12 +97,12 @@ const roleBadges = [
   { label: "Distributor", className: "bg-tone-neutral-tint text-tone-neutral-text", note: "Neutral tone, because a role is identity, not status." },
 ]
 
-function StatusBadge({ label, tone }: { label: string; tone: StatusTone }) {
+export function StatusBadge({ label, tone }: { label: string; tone: StatusMeaning }) {
   return (
     <Badge
       className={cn(
         "rounded-[4px] border px-2.5 py-0.5 text-xs font-normal whitespace-nowrap",
-        statusToneClasses[tone],
+        statusMeaningClasses[tone],
       )}
     >
       {label}
@@ -132,6 +151,29 @@ export function BadgeSystem() {
           </p>
         </div>
       </div>
+
+      <section aria-labelledby="status-meanings" className="flex max-w-3xl flex-col gap-4">
+        <div className="flex flex-col gap-1">
+          <h3 id="status-meanings" className="text-lg font-bold text-foreground">
+            One tone per meaning
+          </h3>
+          <p className="text-sm text-muted-foreground text-pretty">
+            Pick the meaning, not the color. Every lifecycle below uses these eight tokens, so a status means the same
+            thing on a quote, order, shipment, or return.
+          </p>
+        </div>
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {meaningLegend.map((m) => (
+            <li key={m.meaning} className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3">
+              <StatusBadge label={m.label} tone={m.meaning} />
+              <span className="flex flex-col">
+                <span className="text-sm text-foreground">{m.rule}</span>
+                <span className="font-mono text-xs text-muted-foreground">status-{m.meaning}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <div className="flex max-w-3xl flex-col gap-8">
         {statusGroups.map((group) => (

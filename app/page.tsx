@@ -10,6 +10,8 @@ import { HomepageColors } from "@/components/ds/homepage-colors"
 import { BadgeSystem } from "@/components/ds/badge-system"
 import { UsageGuidelines } from "@/components/ds/usage-guidelines"
 import { DeveloperReference } from "@/components/ds/developer-reference"
+import { DataTableShowcase } from "@/components/ds/data-table-showcase"
+import { SpacingLayout } from "@/components/ds/spacing-layout"
 import { Logo, LogoPlate } from "@/components/ds/logo"
 import { DownloadButton, Eyebrow, Panel } from "@/components/ds/primitives"
 
@@ -20,8 +22,10 @@ const nav = [
   { id: "homepage-colors", label: "Homepage Colors" },
   { id: "badges", label: "Badges" },
   { id: "typography", label: "Typography" },
-  { id: "radius", label: "Shape & Elevation" },
-  { id: "components", label: "Components" },
+{ id: "radius", label: "Shape & Elevation" },
+{ id: "spacing", label: "Spacing & Layout" },
+{ id: "components", label: "Components" },
+{ id: "tables", label: "Tables" },
   { id: "motion", label: "Motion & Loading" },
   { id: "imagery", label: "In Product" },
   { id: "guidelines", label: "Do & Don't" },
@@ -48,7 +52,9 @@ const sections = [
   { id: "badges", eyebrow: "Foundations", title: "Badges", description: "Every status has one tone, and that tone means the same thing on every screen.", node: <BadgeSystem /> },
   { id: "typography", eyebrow: "Foundations", title: "Typography", description: "Pragmatica Black and Book carry every screen; Bookmania is for marketing accents. Sizes match the CerrowireConnect-V3 Figma file. Click any class to copy it.", node: <Typography /> },
   { id: "radius", eyebrow: "Foundations", title: "Shape & Elevation", description: "Soft rounded corners echo the wire-inspired logo. Cards use rounded-xl; pills and primary buttons use fully rounded ends.", node: <RadiusShowcase /> },
+  { id: "spacing", eyebrow: "Foundations", title: "Spacing & Layout", description: "A 4px spacing scale and the page grid from the Figma Product Search screen: top bar, gutter, filter rail, and table.", node: <SpacingLayout /> },
   { id: "components", eyebrow: "Library", title: "Components", description: "Core building blocks styled to the Cerrowire theme — all-caps rounded buttons, badges, and form controls.", node: <ComponentShowcase /> },
+  { id: "tables", eyebrow: "Library", title: "Tables", description: "The product results table from Figma. Text columns align left, UOM is centered, and quantities align right.", node: <DataTableShowcase /> },
   { id: "motion", eyebrow: "Library", title: "Motion & Loading", description: "Spinners, skeletons, and interaction states from the Connect app. Motion is quick and functional, and orange marks progress.", node: <MotionShowcase /> },
   { id: "imagery", eyebrow: "Library", title: "In Product", description: "The new login from cdeweb.cerrowire.com, live and rebuilt from tokens, with the gaps product still needs to close.", node: <ImageryShowcase /> },
   { id: "guidelines", eyebrow: "Usage", title: "Do & Don't", description: "Rules for applying the Cerrowire brand in product, in the same format as Webflow’s brand guidelines.", node: <UsageGuidelines /> },
