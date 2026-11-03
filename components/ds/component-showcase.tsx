@@ -141,7 +141,7 @@ export function ComponentShowcase() {
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="notes">Notes</Label>
-            <Textarea id="notes" placeholder="Add delivery instructions…" />
+            <Textarea id="notes" placeholder="Add delivery instructions" />
           </div>
           <div className="flex items-center justify-between rounded-lg border border-border p-3">
             <Label htmlFor="rush" className="cursor-pointer">Rush delivery</Label>

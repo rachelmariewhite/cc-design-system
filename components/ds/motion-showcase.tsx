@@ -106,7 +106,7 @@ function SpinnerGallery() {
           <div className="flex flex-col gap-2">
             <div className="flex h-full min-h-28 flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-border p-4">
               <Spinner size="lg" label="Loading quotes" />
-              <p className="text-body text-muted-foreground">Loading quotes…</p>
+              <p className="text-body text-muted-foreground">Loading quotes</p>
             </div>
             <p className="text-caption text-muted-foreground">Panel load: lg centered with a label</p>
           </div>
@@ -244,7 +244,7 @@ export function MotionShowcase() {
           <LabeledBlock label="On dark surfaces">
             <div className="flex items-center gap-3 rounded-lg bg-sidebar px-4 py-3">
               <Spinner size="md" className="text-sidebar-primary" label="Loading account" />
-              <p className="text-body text-sidebar-foreground">Loading your account…</p>
+              <p className="text-body text-sidebar-foreground">Loading your account</p>
             </div>
           </LabeledBlock>
           <Spec>{'<Spinner size="sm" label="Loading orders" />'}</Spec>
@@ -257,7 +257,7 @@ export function MotionShowcase() {
           <LabeledBlock label="Inline loading">
             <div className="flex items-center gap-3 rounded-lg border border-border px-4 py-3">
               <Spinner size="md" label="Loading open orders" />
-              <p className="text-body text-muted-foreground">Loading open orders…</p>
+              <p className="text-body text-muted-foreground">Loading open orders</p>
             </div>
           </LabeledBlock>
           <LabeledBlock label="Live tracking status">
