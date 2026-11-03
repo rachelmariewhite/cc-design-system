@@ -89,11 +89,11 @@ export function ImageryShowcase() {
       <div className="grid gap-4 lg:grid-cols-3">
         <Panel as="figure" className="overflow-hidden lg:col-span-2">
           <img
-            src="/images/ref-desktop-dashboard.png"
-            alt="Cerrowire Connect desktop dashboard showing the home overview, quick actions, and product categories"
+            src="/images/product-home-desktop.png"
+            alt="Live Cerrowire Connect home on desktop: dark sidebar menu, Welcome back, Rachel with a SALESREP rep code badge, and five tinted quick link cards"
             className="h-auto w-full"
           />
-          <Caption title="Desktop — Dashboard" note="Sidebar nav, overview stat cards, quick actions, category grid." />
+          <Caption title="Live — Home, desktop" note="cdeweb.cerrowire.com: dark sidebar, welcome header with role badge, five quick link cards." />
         </Panel>
         <Panel as="figure" className="overflow-hidden">
           <img
