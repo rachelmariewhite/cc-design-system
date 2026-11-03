@@ -16,7 +16,7 @@ const groups: { label: string; note?: string; match: (n: string) => boolean }[] 
   { label: "Figma brand palette", match: (n) => n === "primary" || n.startsWith("brand-") },
   {
     label: "Action & links",
-    note: "Buttons use --action, not brand orange, so white button text passes AA.",
+    note: "Buttons and table headers use --action, set to brand orange #F0721F.",
     match: (n) => n.startsWith("action") || n === "link",
   },
   { label: "Status", match: (n) => n.startsWith("status-") },

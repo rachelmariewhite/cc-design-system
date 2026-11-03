@@ -24,7 +24,7 @@ const tokenGroups = [
   {
     title: "Brand & action",
     tokens: [
-      { cls: "bg-action hover:bg-action-hover", use: "Primary button fill, #B9500F (4.98:1 with white)" },
+      { cls: "bg-action hover:bg-action-hover", use: "Primary button and table header fill, brand #F0721F" },
       { cls: "bg-primary", use: "Brand orange #F0721F: logo, active nav, rings. Never behind text" },
       { cls: "border-border", use: "All dividers and outlines" },
       { cls: "ring-ring", use: "Focus rings" },
@@ -90,7 +90,7 @@ const snippets = [
 
 const checklist = [
   "Text uses one type class (ds-* or text-*) per element.",
-  "Primary buttons use bg-action with text-action-foreground. Never put text on brand #F0721F; use text-link for orange text on light surfaces.",
+  "Primary buttons use bg-action (brand #F0721F) with text-action-foreground. Use text-link for orange text on light surfaces.",
   "Status badges pick a meaning (draft, submitted, progress, transit, action, complete, problem, closed), never a color.",
   "Cards use rounded-xl with border-border. Buttons and pills use rounded-full.",
   "Every interactive element has a visible focus ring and an accessible name.",

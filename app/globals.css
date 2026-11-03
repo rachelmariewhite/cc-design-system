@@ -213,10 +213,9 @@
   --primary-foreground: #ffffff;
   /* Deep orange for inline text and links on light surfaces. */
   --link: #9a4a12;
-  /* Button fill. White on brand #F0721F is 2.94:1, so buttons use a deeper
-     orange: white on #B9500F is 4.98:1 (AA for 14px button text). */
-  --action: #b9500f;
-  --action-hover: #a94709;
+  /* Button and table-header fill: brand #F0721F, matching Figma. */
+  --action: #f0721f;
+  --action-hover: #d9621a;
   --action-foreground: #ffffff;
   --secondary: #f2ede9;
   --secondary-foreground: #373331;
@@ -318,8 +317,8 @@
   --primary-foreground: #ffffff;
   /* On dark surfaces the brand orange already exceeds AA, and a touch brighter aids legibility. */
   --link: #ff8a3d;
-  --action: #b9500f;
-  --action-hover: #a94709;
+  --action: #f0721f;
+  --action-hover: #d9621a;
   --action-foreground: #ffffff;
   --secondary: #4a4543;
   --secondary-foreground: #f7f4f1;
