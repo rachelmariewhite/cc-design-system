@@ -15,7 +15,7 @@ const rules: Rule[] = [
     dontText: "Don’t use orange for warnings, decoration, or more than one competing CTA.",
     doDemo: (
       <div className="flex gap-2">
-        <span className={cn(pill, "bg-primary text-primary-foreground")}>Submit order</span>
+        <span className={cn(pill, "bg-action text-action-foreground")}>Submit order</span>
         <span className={cn(pill, "border border-border text-foreground")}>Cancel</span>
       </div>
     ),
