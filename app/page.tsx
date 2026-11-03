@@ -2,7 +2,6 @@ import { Section } from "@/components/ds/section"
 import { ColorPalette } from "@/components/ds/color-palette"
 import { Typography } from "@/components/ds/typography"
 import { ComponentShowcase } from "@/components/ds/component-showcase"
-import { PatternShowcase } from "@/components/ds/pattern-showcase"
 import { MotionShowcase } from "@/components/ds/motion-showcase"
 import { LogoShowcase } from "@/components/ds/logo-showcase"
 import { RadiusShowcase } from "@/components/ds/radius-showcase"
@@ -24,7 +23,6 @@ const nav = [
   { id: "radius", label: "Shape & Elevation" },
   { id: "components", label: "Components" },
   { id: "motion", label: "Motion & Loading" },
-  { id: "patterns", label: "Patterns" },
   { id: "imagery", label: "In Product" },
   { id: "guidelines", label: "Do & Don't" },
   { id: "developers", label: "For Developers" },
@@ -52,7 +50,6 @@ const sections = [
   { id: "radius", eyebrow: "Foundations", title: "Shape & Elevation", description: "Soft rounded corners echo the wire-inspired logo. Cards use rounded-xl; pills and primary buttons use fully rounded ends.", node: <RadiusShowcase /> },
   { id: "components", eyebrow: "Library", title: "Components", description: "Core building blocks styled to the Cerrowire theme — all-caps rounded buttons, badges, and form controls.", node: <ComponentShowcase /> },
   { id: "motion", eyebrow: "Library", title: "Motion & Loading", description: "Spinners, skeletons, and interaction states from the Connect app. Motion is quick and functional, and orange marks progress.", node: <MotionShowcase /> },
-  { id: "patterns", eyebrow: "Library", title: "Patterns", description: "Composite patterns lifted straight from the Connect dashboard — overview stats and quick actions.", node: <PatternShowcase /> },
   { id: "imagery", eyebrow: "Library", title: "In Product", description: "The new login from cdeweb.cerrowire.com, live and rebuilt from tokens, with the gaps product still needs to close.", node: <ImageryShowcase /> },
   { id: "guidelines", eyebrow: "Usage", title: "Do & Don't", description: "Rules for applying the Cerrowire brand in product, in the same format as Webflow’s brand guidelines.", node: <UsageGuidelines /> },
   { id: "developers", eyebrow: "Usage", title: "For Developers", description: "Token classes, copy-paste patterns, and a pre-merge checklist so every screen ships consistent.", node: <DeveloperReference /> },
