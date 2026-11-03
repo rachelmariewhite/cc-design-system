@@ -1,4 +1,4 @@
-import { FileText } from "lucide-react"
+import { Bell, FileText } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Panel } from "@/components/ds/primitives"
 import { cn } from "@/lib/utils"
@@ -151,13 +151,20 @@ export function BadgeSystem() {
         </Panel>
         <Panel className="flex flex-col gap-3 p-5">
           <p className="text-sm font-bold text-foreground">Notification counter</p>
-          <div className="flex items-center gap-4">
-            <span className="flex size-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
-              4
-            </span>
+          <div className="flex items-center gap-5">
+            <button
+              type="button"
+              aria-label="Open notifications, 4 unread"
+              className="relative flex size-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Bell className="size-5" aria-hidden="true" />
+              <span className="absolute -top-1.5 -right-1.5 flex size-5 items-center justify-center rounded-full bg-primary text-[10px] leading-none font-bold text-primary-foreground">
+                4
+              </span>
+            </button>
             <p className="text-xs leading-relaxed text-muted-foreground">
-              White numerals on #F0721F, matching the live product. Use{" "}
-              <span className="font-mono text-foreground">bg-primary text-primary-foreground</span>.
+              Figma spec: 20px bell, 20px circle in #F0721F pinned to the top-right corner, 10px bold white
+              numeral. Use <span className="font-mono text-foreground">bg-primary text-primary-foreground</span>.
             </p>
           </div>
         </Panel>
